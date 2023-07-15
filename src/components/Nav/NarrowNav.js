@@ -15,7 +15,8 @@ export const NarrowNav = () => {
 
     return(
         <Flex bg='palette.3' 
-        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center'>
+        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='fixed'
+        >
             <Heading color='palette.5'>
                 Link
             </Heading>
