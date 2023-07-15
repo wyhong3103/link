@@ -1,4 +1,4 @@
-import { Flex, Heading, VStack, Input, Button, InputRightElement, Link, InputGroup, Text } from "@chakra-ui/react"
+import { Flex, Heading, VStack, Input, Button, InputRightElement, InputGroup, Text } from "@chakra-ui/react"
 import { useState } from "react"
 
 export const Register = () => {
@@ -11,7 +11,7 @@ export const Register = () => {
                 <Heading color='palette.5'>
                     Register
                 </Heading>
-                <VStack gap='20px'>
+                <VStack gap='10px'>
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             First Name
@@ -107,7 +107,7 @@ export const Register = () => {
                         </InputGroup>
                     </VStack>
                 </VStack>
-                <VStack w='100%'>
+                <VStack w='100%' gap='15px'>
                     <Button bg='palette.4' minW='200px'
                         css={{
                             '&:hover': {
@@ -116,6 +116,15 @@ export const Register = () => {
                         }}
                     >
                         <Text color='palette.1'>Get Started</Text>
+                    </Button>
+                    <Button bg='palette.4' minW='200px'
+                        css={{
+                            '&:hover': {
+                                backgroundColor: '#11999E',
+                            },
+                        }}
+                    >
+                        <Text color='palette.1'>Login</Text>
                     </Button>
                 </VStack>
             </VStack>
