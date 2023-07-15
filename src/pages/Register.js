@@ -110,7 +110,7 @@ export const Register = () => {
                     </VStack>
                 </VStack>
                 <VStack w='100%' gap='15px'>
-                    <Button bg='palette.4' minW='200px'
+                    <Button bg='palette.4' minW='100%'
                         css={{
                             '&:hover': {
                                 backgroundColor: '#11999E',
@@ -119,7 +119,7 @@ export const Register = () => {
                     >
                         <Text color='palette.1'>Get Started</Text>
                     </Button>
-                    <Button bg='palette.4' minW='200px'
+                    <Button bg='palette.4' minW='100%'
                         css={{
                             '&:hover': {
                                 backgroundColor: '#11999E',
