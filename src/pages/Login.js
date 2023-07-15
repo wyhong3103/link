@@ -1,11 +1,22 @@
-import { Flex, Heading, VStack, Input, Button, InputRightElement, Link, InputGroup, Text } from "@chakra-ui/react"
+import { 
+    Flex, Heading, VStack, Input, Button, InputRightElement, Link, InputGroup, Text,
+    Modal, useDisclosure
+} from '@chakra-ui/react'
+import { ForgotPasswordModal } from '../components/Login/ForgotPasswordModal'
+
+
 import { useState } from "react"
 
 export const Login = () => {
     const [show, setShow] = useState(false)
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
 
     return(
         <Flex bg='palette.4' minH={'100vh'} justify='center' align='center'>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+                <ForgotPasswordModal/>
+            </Modal>
             <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px'>
                 <VStack>
                     <Heading color='palette.5'>
@@ -13,7 +24,7 @@ export const Login = () => {
                     </Heading>
                     <Text color='palette.1'>Start linking with your friends.</Text>
                 </VStack>
-                <VStack gap='20px'>
+                <VStack gap='10px'>
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             Email
@@ -57,7 +68,7 @@ export const Login = () => {
                             </InputRightElement>
                         </InputGroup>
                         <Flex justify='end' direction='row' w='100%'>
-                            <Link color='palette.1' fontSize='13px'>
+                            <Link color='palette.1' fontSize='13px' onClick={onOpen}>
                                 Forgot Password
                             </Link>
                         </Flex>
