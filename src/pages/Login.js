@@ -26,6 +26,7 @@ export const Login = () => {
                                 "border" : "none"
                             }}
                             w='100%'
+                            color='palette.1'
                         />
                     </VStack>
                     <VStack w='100%'>
@@ -41,6 +42,7 @@ export const Login = () => {
                                 style={{
                                     "border" : "none"
                                 }}
+                                color='palette.1'
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow(!show)} bg='palette.4'
