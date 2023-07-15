@@ -126,7 +126,7 @@ export const Register = () => {
                             },
                         }}
                     >
-                        <Text color='palette.1'>Login</Text>
+                        <Text color='palette.1'>Back to Login</Text>
                     </Button>
                 </VStack>
             </VStack>
