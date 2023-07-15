@@ -17,6 +17,7 @@ export const Register = () => {
                             First Name
                         </Text>
                         <Input
+                            placeholder='Enter first name'
                             bg='palette.2'
                             style={{
                                 "border" : "none"
@@ -29,6 +30,7 @@ export const Register = () => {
                             Last Name
                         </Text>
                         <Input
+                            placeholder='Enter last name'
                             bg='palette.2'
                             style={{
                                 "border" : "none"
