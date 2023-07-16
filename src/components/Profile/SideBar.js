@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import {VStack, Button, Image, Text, HStack, Heading, Link} from '@chakra-ui/react';
+import {VStack, Button, Image, Text, HStack, Link} from '@chakra-ui/react';
 import {
     Modal,
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     useDisclosure
@@ -80,6 +79,9 @@ export const SideBar = ({url, type, id, friends}) => {
                                     '&:hover': {
                                         backgroundColor: '#11999E',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#11999E',
+                                    },
                                 }}
                                 onClick={i[1]}
                             >
@@ -92,6 +94,9 @@ export const SideBar = ({url, type, id, friends}) => {
                     <Button border='none' bg='palette.2' w='100%'
                         css={{
                             '&:hover': {
+                                backgroundColor: '#11999E',
+                            },
+                            '&:active': {
                                 backgroundColor: '#11999E',
                             },
                         }}
