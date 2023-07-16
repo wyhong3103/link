@@ -41,6 +41,9 @@ export const ResetPassword = () => {
                                         '&:hover': {
                                             backgroundColor: '#11999E',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#11999E',
+                                        },
                                     }}
                                 >
                                 <Text color='palette.1'>{show1 ? 'Hide' : 'Show'}</Text>
@@ -69,6 +72,9 @@ export const ResetPassword = () => {
                                         '&:hover': {
                                             backgroundColor: '#11999E',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#11999E',
+                                        },
                                     }}
                                 >
                                 <Text color='palette.1'>{show2 ? 'Hide' : 'Show'}</Text>
@@ -83,6 +89,9 @@ export const ResetPassword = () => {
                             '&:hover': {
                                 backgroundColor: '#11999E',
                             },
+                            '&:active': {
+                                backgroundColor: '#11999E',
+                            },
                         }}
                         onClick={() => setOk(!ok)}
                     >
@@ -91,6 +100,9 @@ export const ResetPassword = () => {
                     <Button bg='palette.4' minW='100%'
                         css={{
                             '&:hover': {
+                                backgroundColor: '#11999E',
+                            },
+                            '&:active': {
                                 backgroundColor: '#11999E',
                             },
                         }}

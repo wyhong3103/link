@@ -33,6 +33,9 @@ export const ForgotPasswordModal = () => {
                         '&:hover': {
                             backgroundColor: '#11999E',
                         },
+                        '&:active': {
+                            backgroundColor: '#11999E',
+                        },
                     }}
                 >
                     <Text color='palette.1'>Submit</Text>
