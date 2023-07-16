@@ -49,7 +49,7 @@ export const CommentEditor = () => {
                     </Checkbox>
                     <Checkbox colorScheme='#11999E'>
                         <Text color='palette.1'>
-                            Math
+                            LaTeX
                         </Text>
                     </Checkbox>
                 </HStack>

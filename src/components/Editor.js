@@ -1,5 +1,4 @@
-import { Flex, Textarea, Checkbox, HStack, VStack, Text, Button, Image, useDisclosure } from '@chakra-ui/react'
-import { Content } from './Content';
+import { Flex, Textarea, Checkbox, HStack, VStack, Text, Button, Image  } from '@chakra-ui/react'
 import {
     Modal,
     ModalOverlay,
@@ -7,7 +6,9 @@ import {
     ModalHeader,
     ModalBody,
     ModalCloseButton,
+    useDisclosure
 } from '@chakra-ui/react'
+import { Content } from './Content';
 import { ReactComponent as DotsLogo } from '../assets/svgs/dots.svg';
 import { useState, useRef } from 'react';
 
@@ -51,7 +52,7 @@ export const Editor = () => {
                     </Checkbox>
                     <Checkbox c>
                         <Text color='palette.1'>
-                            Math
+                            LaTeX
                         </Text>
                     </Checkbox>
                     <Checkbox 
