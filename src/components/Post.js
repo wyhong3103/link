@@ -1,4 +1,3 @@
-import { Editor } from "./Editor"
 import { CommentEditor } from "./Post/CommentEditor"
 import { Comment } from "./Post/Comment"
 import { Content } from "./Content"
