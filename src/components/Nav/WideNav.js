@@ -113,6 +113,28 @@ export const WideNav = () => {
                                     }}
                                 >
                                     <Text color='palette.1'>
+                                        Friends
+                                    </Text>
+                                </Button>
+                                <Button border='none' bg='none' w='100%'
+                                    css={{
+                                        '&:hover': {
+                                            backgroundColor: '#222831',
+                                        },
+                                    }}
+                                >
+                                    <Text color='palette.1'>
+                                        Link Up
+                                    </Text>
+                                </Button>
+                                <Button border='none' bg='none' w='100%'
+                                    css={{
+                                        '&:hover': {
+                                            backgroundColor: '#222831',
+                                        },
+                                    }}
+                                >
+                                    <Text color='palette.1'>
                                         Log Out
                                     </Text>
                                 </Button>
