@@ -15,7 +15,7 @@ export const NarrowNav = () => {
 
     return(
         <Flex bg='palette.3' 
-        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='fixed'
+        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='sticky' top='0'
         zIndex='99' shadow='base'
         >
             <Heading color='palette.5'>
@@ -35,7 +35,7 @@ export const NarrowNav = () => {
                     p='15px'
                     onClick={onOpenSearch}
                 >
-                    <Image as={SearchLogo} alt='search-logo' fill='palette.1' width='20px'/>
+                    <Image as={SearchLogo} alt='search-logo' fill='palette.1' width='20px' h='25px'/>
                 </Button>
                 <Button
                     bg='none'
@@ -50,7 +50,7 @@ export const NarrowNav = () => {
                     p='15px'
                     onClick={onOpenBurger}
                 >
-                    <Image as={BurgerLogo} alt='burger-logo' fill='palette.1' width='40px'/>
+                    <Image as={BurgerLogo} alt='burger-logo' fill='palette.1' width='40px' h='30px'/>
                 </Button>
             </HStack>
             <Modal isOpen={isOpenSearch} onClose={onCloseSearch}>

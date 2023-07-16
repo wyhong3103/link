@@ -13,7 +13,7 @@ import { ReactComponent as FriendRequestLogo } from '../../assets/svgs/friend-re
 export const WideNav = () => {
     return(
         <Flex bg='palette.3' 
-        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='fixed'
+        direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='sticky' top='0'
         zIndex='99' shadow='base'
         >
             <HStack gap='40px'>
@@ -55,7 +55,7 @@ export const WideNav = () => {
                     }}
                     p='15px'
                 >
-                    <Image as={FriendRequestLogo} alt='friend-request-logo' fill='palette.1' width='25px'/>
+                    <Image as={FriendRequestLogo} alt='friend-request-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
                 <Button
                     bg='none'
@@ -69,7 +69,7 @@ export const WideNav = () => {
                     }}
                     p='15px'
                 >
-                    <Image as={ChatLogo} alt='chat-logo' fill='palette.1' width='25px'/>
+                    <Image as={ChatLogo} alt='chat-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
                 <Popover placement='bottom-start'>
                     <PopoverTrigger>
@@ -89,7 +89,7 @@ export const WideNav = () => {
                             <Text color='palette.1' fontSize='17px'>
                                 James
                             </Text>
-                            <Image as={ArrowDownLogo} alt='arrow-down-logo' fill='palette.1' width='25px'/>
+                            <Image as={ArrowDownLogo} alt='arrow-down-logo' fill='palette.1' width='25px' h='25px'/>
                         </HStack>
                     </Button>
                     </PopoverTrigger>
