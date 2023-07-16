@@ -48,7 +48,7 @@ export const UserList = ({friendlist, users}) => {
             {
                 users.map(
                     i => 
-                    <Flex justify='space-between' w='600px' bg='palette.3' p='20px' borderRadius='10px'>
+                    <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px'>
                         <HStack gap='20px'>
                             <Image src={i.image} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
                             <Link path={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
