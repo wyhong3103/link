@@ -28,7 +28,7 @@ export const ChangePassword = () => {
                             <Input
                                 pr='4.5rem'
                                 type={show1 ? 'text' : 'password'}
-                                placeholder='Enter new password'
+                                placeholder='Enter old password'
                                 bg='palette.2'
                                 style={{
                                     "border" : "none"
