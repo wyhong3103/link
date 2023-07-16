@@ -1,4 +1,4 @@
-import { VStack, Image, Button, Input, Text, Checkbox } from "@chakra-ui/react"
+import { VStack, Image, Button, Input, Text, Checkbox, Heading } from "@chakra-ui/react"
 import { useRef, useState } from "react";
 import { Nav } from "../components/Nav"
 
@@ -27,7 +27,10 @@ export const UpdateProfile = () => {
     return(
         <VStack minH='100vh' bg='palette.4'>
             <Nav/>
-            <VStack bg='palette.3' p='30px' borderRadius='10px' gap='20px' w='300px'> 
+            <VStack bg='palette.3' p='30px' borderRadius='10px' gap='20px' w='300px' margin='20px'> 
+                <Heading color='palette.1' fontSize='25px'>
+                    Update Profile
+                </Heading>
                 <Image 
                 src='https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg' 
                 alt='avatar'
