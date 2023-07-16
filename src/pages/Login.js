@@ -65,14 +65,14 @@ export const Login = () => {
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ForgotPasswordModal/>
             </Modal>
-            <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px'>
+            <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px' w='400px'>
                 <VStack>
                     <Heading color='palette.5'>
                         Link
                     </Heading>
                     <Text color='palette.1'>Start linking with your friends.</Text>
                 </VStack>
-                <VStack gap='10px'>
+                <VStack gap='10px' w='100%'>
                     <FormControl isInvalid={error.email && error.email.length > 0}>
                             <FormLabel color='palette.1' w='100%'>
                                 Email
