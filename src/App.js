@@ -9,6 +9,7 @@ import { UpdateProfile } from "./pages/UpdateProfile";
 import { ChangePassword } from "./pages/ChangePassword";
 import { Users } from "./pages/Users";
 import { Friends } from "./pages/Friends";
+import { FriendRequests } from "./pages/FriendRequests";
 import { Chat } from "./pages/Chat";
 
 
@@ -26,6 +27,7 @@ export const App = () => {
                 <Route path='/change-password' element={<ChangePassword/>}/>
                 <Route path='/users' element={<Users/>}/>
                 <Route path='/friends' element={<Friends/>}/>
+                <Route path='/friend-requests' element={<FriendRequests/>}/>
                 <Route path='/chat' element={<Chat/>}/> 
             </Routes>
         </BrowserRouter>
