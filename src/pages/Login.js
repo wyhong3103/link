@@ -31,9 +31,7 @@ export const Login = () => {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [resultError, setResultError] = useState("");
-    const [pwError, setPwError] = useState("");
+    const [error, setError] = useState({});
     const [pw, setPw] = useState("");
     const [show, setShow] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,9 +55,7 @@ export const Login = () => {
         if (res.ok){
             navigate('/');
         } else {
-            if (data.error.email) setEmailError(data.error.email);
-            if (data.error.password) setPwError(data.error.password);
-            if (data.error.result) setResultError(data.error.result);
+            setError({...data.error});
         }
     }
 
@@ -77,7 +73,7 @@ export const Login = () => {
                     <Text color='palette.1'>Start linking with your friends.</Text>
                 </VStack>
                 <VStack gap='10px'>
-                    <FormControl isInvalid={emailError.length > 0}>
+                    <FormControl isInvalid={error.email && error.email.length > 0}>
                             <FormLabel color='palette.1' w='100%'>
                                 Email
                             </FormLabel>
@@ -94,10 +90,10 @@ export const Login = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <FormErrorMessage>
-                                {emailError}
+                                {error.email}
                             </FormErrorMessage>
                     </FormControl>
-                    <FormControl isInvalid={pwError.length > 0}>
+                    <FormControl isInvalid={error.password && error.password.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Password
                         </FormLabel>
@@ -130,7 +126,7 @@ export const Login = () => {
                             </InputRightElement>
                         </InputGroup>
                         <FormErrorMessage>
-                            {pwError}
+                            {error.password}
                         </FormErrorMessage>
                         <Flex justify='end' direction='row' w='100%'>
                             <Link color='palette.1' fontSize='13px' onClick={onOpen}>
@@ -139,9 +135,9 @@ export const Login = () => {
                         </Flex>
                     </FormControl>
                     <VStack>
-                        <FormControl isInvalid={resultError.length > 0}>
+                        <FormControl isInvalid={error.result && error.result.length > 0}>
                             <FormErrorMessage>
-                                {resultError}
+                                {error.result}
                             </FormErrorMessage>
                         </FormControl>
                     </VStack>
