@@ -150,14 +150,10 @@ export const Login = () => {
                             },
                             '&:active': {
                                 backgroundColor: '#11999E',
-                            },
-                            '&:hover:disabled': {
-                                backgroundColor: '#222831',
-                            },
+                            }
                         }}
                         onClick={login}
                         color='palette.1'
-                        isDisabled={!(email.length > 0 && pw.length > 0)}
                     >
                         Login
                     </Button>
