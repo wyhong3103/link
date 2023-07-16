@@ -10,7 +10,7 @@ export const Home = () => {
                 <Nav/>
                 <Flex p={{base : '5px', md : '20px'}} w='100%'>
                     <VStack w='100%' gap='30px'>
-                        <Box minW={{base : '400px', md :'700px'}} bg='palette.3' p='10px' borderRadius='10px'>
+                        <Box w={{base : '400px', md :'700px'}} bg='palette.3' p='10px' borderRadius='10px'>
                             <Editor/>
                         </Box>
                         <Post
@@ -22,7 +22,7 @@ export const Home = () => {
                                         last_name : 'Allen', 
                                         image : 'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'
                                     } ,
-                                    content : "testing content", 
+                                    content : "Pellentesque ut iaculis lectus. Maecenas scelerisque fringilla massa id dapibus. Proin ullamcorper risus in orci faucibus aliquam. Nam accumsan porttitor lorem, et dignissim augue venenatis sed. Sed suscipit purus nunc, at hendrerit sapien gravida id. Suspendisse at lorem mollis, cursus mauris quis, aliquet lectus. Suspendisse efficitur hendrerit purus, vel interdum velit tincidunt eu. Vivamus sit amet malesuada felis, ac fermentum nisi. Maecenas porttitor nunc in semper egestas. Mauris et sem lacinia, ultrices ligula nec, volutpat diam. Donec mollis tempor elit, a accumsan urna porta in. Pellentesque non odio ac mi pulvinar convallis ac ut nisl. Vivamus.", 
                                     markdown : true, 
                                     math : true,
                                     date : '15 July 2023', 
@@ -31,7 +31,7 @@ export const Home = () => {
                                     [ 
                                         {
                                             _id : 'test', 
-                                            content : "testing comment", 
+                                            content : "Pellentesque ut iaculis lectus. Maecenas scelerisque fringilla massa id dapibus. Proin ullamcorper risus in orci faucibus aliquam. Nam accumsan porttitor lorem, et dignissim augue venenatis sed. Sed suscipit purus nunc, at hendrerit sapien gravida id. Suspendisse at lorem mollis, cursus mauris quis, aliquet lectus. Suspendisse efficitur hendrerit purus, vel interdum velit tincidunt eu. Vivamus sit amet malesuada felis, ac fermentum nisi. Maecenas porttitor nunc in semper egestas. Mauris et sem lacinia, ultrices ligula nec, volutpat diam. Donec mollis tempor elit, a accumsan urna porta in. Pellentesque non odio ac mi pulvinar convallis ac ut nisl. Vivamus.", 
                                             author : {
                                                 _id : 'test', 
                                                 first_name : "Barry", 

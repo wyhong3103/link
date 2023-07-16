@@ -11,7 +11,7 @@ export const Post = ({post}) => {
     */
 
     return(
-        <VStack bg='palette.3' minW={{sm : '400px', md :'700px'}} p='20px' gap='20px' borderRadius='10px'>
+        <VStack bg='palette.3' w={{sm : '400px', md :'700px'}} p='20px' gap='20px' borderRadius='10px'>
             <Flex direction='row' w='100%' gap='20px'>
                 <Image src={post.author.image} w='50px' objectFit='cover' borderRadius='100%'/>
                 <Flex direction='column'>
