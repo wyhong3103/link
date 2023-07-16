@@ -174,6 +174,7 @@ export const Login = () => {
                                 backgroundColor: '#11999E',
                             },
                         }}
+                        onClick={() => navigate('/register')}
                     >
                         <Text color='palette.1'>Register</Text>
                     </Button>
