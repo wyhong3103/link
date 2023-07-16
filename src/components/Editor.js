@@ -74,6 +74,15 @@ export const Editor = () => {
                                 onChange={handleFileChange}
                                 accept="image/*"
                             />
+                            <Text color='palette.1'
+                                style={{
+                                    'white-space': 'nowrap',
+                                    'overflow': 'hidden',
+                                    'text-overflow': 'ellipsis',
+                                }}
+                            >
+                                {selectedFile ? selectedFile.name : null}
+                            </Text>
                             <Button bg='palette.4'
                                 css={{
                                     '&:hover': {
@@ -87,18 +96,10 @@ export const Editor = () => {
                                 onClick={() => fileInputRef.current.click()}
                                 color='palette.1'
                                 size='sm'
+                                w='100%'
                             >
                                 Upload
                             </Button>
-                            <Text color='palette.1'
-                                style={{
-                                    'white-space': 'nowrap',
-                                    'overflow': 'hidden',
-                                    'text-overflow': 'ellipsis',
-                                }}
-                            >
-                                {selectedFile ? selectedFile.name : null}
-                            </Text>
                         </>
 
                         :

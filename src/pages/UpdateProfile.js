@@ -38,7 +38,7 @@ export const UpdateProfile = () => {
                 borderRadius='100%'
                 />
 
-                <VStack>
+                <VStack w='100%'>
                     <Checkbox 
                         isChecked={imageChecked}
                         onChange={() => setImageChecked(!imageChecked)}
@@ -58,21 +58,6 @@ export const UpdateProfile = () => {
                                 onChange={handleFileChange}
                                 accept="image/*"
                             />
-                            <Button bg='palette.4'
-                                css={{
-                                    '&:hover': {
-                                        backgroundColor: '#11999E',
-                                    },
-                                    '&:active': {
-                                        backgroundColor: '#11999E',
-                                    },
-                                }}
-                                p='10px'
-                                onClick={() => fileInputRef.current.click()}
-                                color='palette.1'
-                            >
-                                Upload
-                            </Button>
                             <Text color='palette.1'
                                 style={{
                                     'white-space': 'nowrap',
@@ -83,6 +68,21 @@ export const UpdateProfile = () => {
                             >
                                 {selectedFile ? selectedFile.name : null}
                             </Text>
+                            <Button bg='palette.4'
+                                css={{
+                                    '&:hover': {
+                                        backgroundColor: '#11999E',
+                                    },
+                                    '&:active': {
+                                        backgroundColor: '#11999E',
+                                    },
+                                }}
+                                onClick={() => fileInputRef.current.click()}
+                                color='palette.1'
+                                w='100%'
+                            >
+                                Upload
+                            </Button>
                         </>
 
                         :
@@ -91,7 +91,7 @@ export const UpdateProfile = () => {
                     }
                 </VStack>
 
-                <VStack>
+                <VStack w='100%'>
                     <Text color='palette.1' align='left' w='100%'>
                         First Name
                     </Text>
@@ -107,7 +107,7 @@ export const UpdateProfile = () => {
                     />
                 </VStack>
 
-                <VStack>
+                <VStack w='100%'>
                     <Text color='palette.1' align='left' w='100%'>
                         Last Name
                     </Text>
@@ -123,7 +123,7 @@ export const UpdateProfile = () => {
                     />
                 </VStack>
 
-                <Button bg='palette.4'
+                <Button bg='palette.4' minW='100%'
                     css={{
                         '&:hover': {
                             backgroundColor: '#11999E',
@@ -132,10 +132,8 @@ export const UpdateProfile = () => {
                             backgroundColor: '#11999E',
                         },
                     }}
-                    p='10px'
-                    color='palette.1'
                 >
-                    Update
+                    <Text color='palette.1'>Update</Text>
                 </Button>
             </VStack>
         </VStack>
