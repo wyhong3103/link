@@ -33,6 +33,7 @@ export const Login = () => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [resultError, setResultError] = useState("");
+    const [pwError, setPwError] = useState("");
     const [pw, setPw] = useState("");
     const [show, setShow] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,6 +58,7 @@ export const Login = () => {
             navigate('/');
         } else {
             if (data.error.email) setEmailError(data.error.email);
+            if (data.error.password) setPwError(data.error.password);
             if (data.error.result) setResultError(data.error.result);
             console.log(data.error);
         }
@@ -96,10 +98,10 @@ export const Login = () => {
                                 {emailError}
                             </FormErrorMessage>
                     </FormControl>
-                    <VStack w='100%'>
-                        <Text color='palette.1' w='100%'>
+                    <FormControl isInvalid={pwError.length > 0}>
+                        <FormLabel color='palette.1' w='100%'>
                             Password
-                        </Text>
+                        </FormLabel>
                         <InputGroup>
                             <Input
                                 pr='4.5rem'
@@ -128,12 +130,15 @@ export const Login = () => {
                                 </Button>
                             </InputRightElement>
                         </InputGroup>
+                        <FormErrorMessage>
+                            {pwError}
+                        </FormErrorMessage>
                         <Flex justify='end' direction='row' w='100%'>
                             <Link color='palette.1' fontSize='13px' onClick={onOpen}>
                                 Forgot Password
                             </Link>
                         </Flex>
-                    </VStack>
+                    </FormControl>
                     <VStack>
                         <FormControl isInvalid={resultError.length > 0}>
                             <FormErrorMessage>
