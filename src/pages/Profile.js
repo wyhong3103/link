@@ -7,7 +7,7 @@ export const Profile = () => {
     return(
         <VStack minH='100vh' bg='palette.4'>
             <Nav/>
-            <Flex justify='space-around' w='100%' p={{base : '5px', md : '20px'}} align='start'>
+            <Flex direction={{base : 'column', lg : 'row'}} justify='space-around' gap={{base : '20px', lg : '0px' }} w='100%' p={{base : '5px', md : '20px'}} align={{base : 'center', lg : 'start'}}>
                 <SideBar url="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg"
                     type='self'
                     friends={
