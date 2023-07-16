@@ -60,7 +60,6 @@ export const Login = () => {
             if (data.error.email) setEmailError(data.error.email);
             if (data.error.password) setPwError(data.error.password);
             if (data.error.result) setResultError(data.error.result);
-            console.log(data.error);
         }
     }
 

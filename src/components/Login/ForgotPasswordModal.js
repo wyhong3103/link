@@ -1,8 +1,38 @@
 import {
-    ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, VStack, Input, Button, Text
+    ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Input, Button, Text, FormControl, FormErrorMessage, FormHelperText, VStack
 } from '@chakra-ui/react';
+import { useState } from 'react';
 
 export const ForgotPasswordModal = () => {
+    const [email, setEmail] = useState('');
+    const [resultError, setResultError] = useState("");
+    const [ok, setOk] = useState(false);
+    const api_url = process.env.REACT_APP_API_URL;
+
+    const submit = async () => {
+        const res = await fetch(
+            api_url + '/auth/reset-password',
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+                body: JSON.stringify({email})
+            }
+        );
+        
+        const data = await res.json();
+
+        if (res.ok){
+            setOk(true);
+            setResultError('');
+        } else {
+            setOk(false);
+            if (data.error.result) setResultError(data.error.result);
+        }
+    }
+
     return(
         <>
         <ModalOverlay />
@@ -12,23 +42,35 @@ export const ForgotPasswordModal = () => {
             <ModalBody>
                 <VStack gap='10px'>
                     <Text color='palette.1' w='100%'>
-                        Email
+                        Please provide your email address below so that we can send you a recovery email for verification.
                     </Text>
-                    <Input
-                        type="email"
-                        placeholder="Enter your email"
-                        bg='palette.2'
-                        style={{
-                            "border" : "none"
-                        }}
-                        w='100%'
-                        color='palette.1'
-                    />
+                    <FormControl>
+                        <Input
+                            type="email"
+                            placeholder="Enter your email"
+                            bg='palette.2'
+                            style={{
+                                "border" : "none"
+                            }}
+                            w='100%'
+                            color='palette.1'
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                    </FormControl>
+                    <FormControl isInvalid={resultError.length > 0}>
+                        <FormErrorMessage>
+                            {resultError}
+                        </FormErrorMessage>
+                        <FormHelperText color='palette.1'>
+                            {ok ? "A recovery email is sent to the email provided. Check your spam if you could not find the email." : null}
+                        </FormHelperText>
+                    </FormControl>
                 </VStack>
             </ModalBody>
 
             <ModalFooter>
-                <Button bg='palette.4'
+                <Button bg='palette.4' 
                     css={{
                         '&:hover': {
                             backgroundColor: '#11999E',
@@ -36,7 +78,13 @@ export const ForgotPasswordModal = () => {
                         '&:active': {
                             backgroundColor: '#11999E',
                         },
+                        '&:hover:disabled': {
+                            backgroundColor: '#222831',
+                        },
                     }}
+                    color='palette.1'
+                    isDisabled={!(email.length > 0)}
+                    onClick={submit}
                 >
                     <Text color='palette.1'>Submit</Text>
                 </Button>
