@@ -28,6 +28,9 @@ export const NarrowNav = () => {
                         '&:hover': {
                             backgroundColor: '#222831',
                         },
+                        '&:active': {
+                            backgroundColor: '#222831',
+                        },
                     }}
                     p='15px'
                     onClick={onOpenSearch}
@@ -38,6 +41,9 @@ export const NarrowNav = () => {
                     bg='none'
                     css={{
                         '&:hover': {
+                            backgroundColor: '#222831',
+                        },
+                        '&:active': {
                             backgroundColor: '#222831',
                         },
                     }}
@@ -63,6 +69,9 @@ export const NarrowNav = () => {
                                     '&:hover': {
                                         backgroundColor: '#11999E',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#11999E',
+                                    },
                                 }}
                             >
                             <Text color='palette.1'>Search</Text>
@@ -81,6 +90,9 @@ export const NarrowNav = () => {
                                     '&:hover': {
                                         backgroundColor: '#222831',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#222831',
+                                    },
                                 }}
                             >
                                 <Text color='palette.1'>
@@ -90,6 +102,9 @@ export const NarrowNav = () => {
                             <Button border='none' bg='none' w='100%'
                                 css={{
                                     '&:hover': {
+                                        backgroundColor: '#222831',
+                                    },
+                                    '&:active': {
                                         backgroundColor: '#222831',
                                     },
                                 }}
@@ -103,6 +118,9 @@ export const NarrowNav = () => {
                                     '&:hover': {
                                         backgroundColor: '#222831',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#222831',
+                                    },
                                 }}
                             >
                                 <Text color='palette.1'>
@@ -112,6 +130,9 @@ export const NarrowNav = () => {
                             <Button border='none' bg='none' w='100%'
                                 css={{
                                     '&:hover': {
+                                        backgroundColor: '#222831',
+                                    },
+                                    '&:active': {
                                         backgroundColor: '#222831',
                                     },
                                 }}
@@ -125,6 +146,9 @@ export const NarrowNav = () => {
                                     '&:hover': {
                                         backgroundColor: '#222831',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#222831',
+                                    },
                                 }}
                             >
                                 <Text color='palette.1'>
@@ -136,6 +160,9 @@ export const NarrowNav = () => {
                                     '&:hover': {
                                         backgroundColor: '#222831',
                                     },
+                                    '&:active': {
+                                        backgroundColor: '#222831',
+                                    },
                                 }}
                             >
                                 <Text color='palette.1'>
@@ -145,6 +172,9 @@ export const NarrowNav = () => {
                             <Button border='none' bg='none' w='100%'
                                 css={{
                                     '&:hover': {
+                                        backgroundColor: '#222831',
+                                    },
+                                    '&:active': {
                                         backgroundColor: '#222831',
                                     },
                                 }}

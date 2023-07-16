@@ -15,6 +15,9 @@ export const Success = ({text}) => {
                         '&:hover': {
                             backgroundColor: '#11999E',
                         },
+                        '&:active': {
+                            backgroundColor: '#11999E',
+                        },
                     }}
                 >
                     <Text color='palette.1'>Login</Text>

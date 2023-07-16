@@ -61,6 +61,9 @@ export const Login = () => {
                                         '&:hover': {
                                             backgroundColor: '#11999E',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#11999E',
+                                        },
                                     }}
                                 >
                                 <Text color='palette.1'>{show ? 'Hide' : 'Show'}</Text>
@@ -80,6 +83,9 @@ export const Login = () => {
                             '&:hover': {
                                 backgroundColor: '#11999E',
                             },
+                            '&:active': {
+                                backgroundColor: '#11999E',
+                            },
                         }}
                     >
                         <Text color='palette.1'>Login</Text>
@@ -87,6 +93,9 @@ export const Login = () => {
                     <Button bg='palette.4' minW='100%'
                         css={{
                             '&:hover': {
+                                backgroundColor: '#11999E',
+                            },
+                            '&:active': {
                                 backgroundColor: '#11999E',
                             },
                         }}

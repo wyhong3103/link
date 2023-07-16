@@ -33,6 +33,9 @@ export const WideNav = () => {
                                 '&:hover': {
                                     backgroundColor: '#11999E',
                                 },
+                                '&:active': {
+                                    backgroundColor: '#11999E',
+                                },
                             }}
                         >
                         <Text color='palette.1'>Search</Text>
@@ -46,6 +49,9 @@ export const WideNav = () => {
                         '&:hover': {
                             backgroundColor: '#222831',
                         },
+                        '&:active': {
+                            backgroundColor: '#222831',
+                        },
                     }}
                     p='15px'
                 >
@@ -55,6 +61,9 @@ export const WideNav = () => {
                     bg='none'
                     css={{
                         '&:hover': {
+                            backgroundColor: '#222831',
+                        },
+                        '&:active': {
                             backgroundColor: '#222831',
                         },
                     }}
@@ -68,6 +77,9 @@ export const WideNav = () => {
                         bg='none'
                         css={{
                             '&:hover': {
+                                backgroundColor: '#222831',
+                            },
+                            '&:active': {
                                 backgroundColor: '#222831',
                             },
                         }}
@@ -89,6 +101,9 @@ export const WideNav = () => {
                                         '&:hover': {
                                             backgroundColor: '#222831',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#222831',
+                                        },
                                     }}
                                 >
                                     <Text color='palette.1'>
@@ -98,6 +113,9 @@ export const WideNav = () => {
                                 <Button border='none' bg='none' w='100%'
                                     css={{
                                         '&:hover': {
+                                            backgroundColor: '#222831',
+                                        },
+                                        '&:active': {
                                             backgroundColor: '#222831',
                                         },
                                     }}
@@ -111,6 +129,9 @@ export const WideNav = () => {
                                         '&:hover': {
                                             backgroundColor: '#222831',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#222831',
+                                        },
                                     }}
                                 >
                                     <Text color='palette.1'>
@@ -122,6 +143,9 @@ export const WideNav = () => {
                                         '&:hover': {
                                             backgroundColor: '#222831',
                                         },
+                                        '&:active': {
+                                            backgroundColor: '#222831',
+                                        },
                                     }}
                                 >
                                     <Text color='palette.1'>
@@ -131,6 +155,9 @@ export const WideNav = () => {
                                 <Button border='none' bg='none' w='100%'
                                     css={{
                                         '&:hover': {
+                                            backgroundColor: '#222831',
+                                        },
+                                        '&:active': {
                                             backgroundColor: '#222831',
                                         },
                                     }}
