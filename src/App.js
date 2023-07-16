@@ -6,6 +6,7 @@ import { ResetPassword } from "./pages/ResetPassword";
 import { Home } from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import { UpdateProfile } from "./pages/UpdateProfile";
+import { ChangePassword } from "./pages/ChangePassword";
 import { Users } from "./pages/Users";
 import { Friends } from "./pages/Friends";
 import { Chat } from "./pages/Chat";
@@ -22,6 +23,7 @@ export const App = () => {
                 <Route path='/' element={<Home/>}/>
                 <Route path='/profile/:id' element={<Profile/>}/>
                 <Route path='/update' element={<UpdateProfile/>}/>
+                <Route path='/change-password' element={<ChangePassword/>}/>
                 <Route path='/users' element={<Users/>}/>
                 <Route path='/friends' element={<Friends/>}/>
                 <Route path='/chat' element={<Chat/>}/> 
