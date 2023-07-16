@@ -55,7 +55,7 @@ export const NarrowNav = () => {
             </HStack>
             <Modal isOpen={isOpenSearch} onClose={onCloseSearch}>
                 <ModalOverlay />
-                <ModalContent bg='palette.3' w='300px'>
+                <ModalContent bg='palette.3' w={{base : '300px', md : '600px'}}>
                     <ModalBody p='5px'>
                         <HStack>
                             <Input
