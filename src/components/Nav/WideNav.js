@@ -14,7 +14,7 @@ export const WideNav = () => {
     return(
         <Flex bg='palette.3' 
         direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='fixed'
-        zIndex='99'
+        zIndex='99' shadow='base'
         >
             <HStack gap='40px'>
                 <Heading color='palette.5'>
