@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom'
 import { 
     Flex, Heading, VStack, Input, Button, InputRightElement, Link, InputGroup, Text,
-    Modal, useDisclosure
+    Modal, useDisclosure, FormErrorMessage, FormControl, FormLabel
 } from '@chakra-ui/react'
 import { ForgotPasswordModal } from '../components/Login/ForgotPasswordModal'
 
@@ -8,8 +9,58 @@ import { ForgotPasswordModal } from '../components/Login/ForgotPasswordModal'
 import { useState } from "react"
 
 export const Login = () => {
+    /*
+
+        Login
+        - email & password state
+        - form submit 
+            - wait for response to tell fail or success
+
+            if failed
+                - check field
+                - print error message
+            else
+                - redirect to /
+        
+        Forget Password
+        - submit form
+            - if response OK / Not ok
+            - give message
+
+    */
+
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [resultError, setResultError] = useState("");
+    const [pw, setPw] = useState("");
     const [show, setShow] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const api_url = process.env.REACT_APP_API_URL;
+
+    const login = async () => {
+        const res = await fetch(
+            api_url + '/auth/login',
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+                body: JSON.stringify({email, password : pw})
+            }
+        );
+        
+        const data = await res.json();
+
+        if (res.ok){
+            navigate('/');
+        } else {
+            if (data.error.email) setEmailError(data.error.email);
+            if (data.error.result) setResultError(data.error.result);
+            console.log(data.error);
+        }
+    }
 
 
     return(
@@ -25,21 +76,26 @@ export const Login = () => {
                     <Text color='palette.1'>Start linking with your friends.</Text>
                 </VStack>
                 <VStack gap='10px'>
-                    <VStack w='100%'>
-                        <Text color='palette.1' w='100%'>
-                            Email
-                        </Text>
-                        <Input
-                            type="email"
-                            placeholder="Enter your email"
-                            bg='palette.2'
-                            style={{
-                                "border" : "none"
-                            }}
-                            w='100%'
-                            color='palette.1'
-                        />
-                    </VStack>
+                    <FormControl isInvalid={emailError.length > 0}>
+                            <FormLabel color='palette.1' w='100%'>
+                                Email
+                            </FormLabel>
+                            <Input
+                                type="email"
+                                placeholder="Enter your email"
+                                bg='palette.2'
+                                style={{
+                                    "border" : "none"
+                                }}
+                                w='100%'
+                                color='palette.1'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <FormErrorMessage>
+                                {emailError}
+                            </FormErrorMessage>
+                    </FormControl>
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             Password
@@ -54,6 +110,8 @@ export const Login = () => {
                                     "border" : "none"
                                 }}
                                 color='palette.1'
+                                value={pw}
+                                onChange={(e) => setPw(e.target.value)}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow(!show)} bg='palette.4'
@@ -76,6 +134,13 @@ export const Login = () => {
                             </Link>
                         </Flex>
                     </VStack>
+                    <VStack>
+                        <FormControl isInvalid={resultError.length > 0}>
+                            <FormErrorMessage>
+                                {resultError}
+                            </FormErrorMessage>
+                        </FormControl>
+                    </VStack>
                 </VStack>
                 <VStack w='100%' gap='15px'>
                     <Button bg='palette.4' minW='100%'
@@ -86,9 +151,15 @@ export const Login = () => {
                             '&:active': {
                                 backgroundColor: '#11999E',
                             },
+                            '&:hover:disabled': {
+                                backgroundColor: '#222831',
+                            },
                         }}
+                        onClick={login}
+                        color='palette.1'
+                        isDisabled={!(email.length > 0 && pw.length > 0)}
                     >
-                        <Text color='palette.1'>Login</Text>
+                        Login
                     </Button>
                     <Button bg='palette.4' minW='100%'
                         css={{
