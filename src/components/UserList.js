@@ -16,13 +16,30 @@ export const UserList = ({friendlist, users}) => {
         // deal with API
     }
 
+    const unsend = (id) => {
+        // deal with API
+    }
+
+    const accept = (id) => {
+        // deal with API
+    }
+
     const userType = {
         friend : [
             ['Unlink', (id) => unlink(id)],
             ['Chat', (id) => go('/chat?friendid='+ id)]
         ],
         stranger : [
-            ['Link', (id) => link(id)]
+            ['Link', (id) => link(id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
+        ],
+        requested : [
+            ['Requested', (id) => unsend(id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
+        ],
+        accept : [
+            ['Accept', (id) => accept(id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
         ]
     }
 
@@ -40,16 +57,9 @@ export const UserList = ({friendlist, users}) => {
                         </HStack>
                         <HStack gap='20px'>
                             {
-                                //if is self
-                                false ?
-
-                                null
-
-                                :
-
-                                userType[i.isFriend ? 'friend' : 'stranger'].map(
+                                userType[i.type].map(
                                     i => 
-                                    <Button border='none' bg='palette.2' w='100%'
+                                    <Button border='none' bg='palette.2'
                                         css={{
                                             '&:hover': {
                                                 backgroundColor: '#11999E',
