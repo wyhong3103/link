@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const ForgotPasswordModal = () => {
     const [email, setEmail] = useState('');
-    const [resultError, setResultError] = useState("");
+    const [error, setError] = useState("");
     const [ok, setOk] = useState(false);
     const api_url = process.env.REACT_APP_API_URL;
 
@@ -26,10 +26,10 @@ export const ForgotPasswordModal = () => {
 
         if (res.ok){
             setOk(true);
-            setResultError('');
+            setError({});
         } else {
             setOk(false);
-            if (data.error.result) setResultError(data.error.result);
+            setError({...data.error});
         }
     }
 
@@ -58,9 +58,9 @@ export const ForgotPasswordModal = () => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </FormControl>
-                    <FormControl isInvalid={resultError.length > 0}>
+                    <FormControl isInvalid={error.result && error.result.length > 0}>
                         <FormErrorMessage>
-                            {resultError}
+                            {error.result}
                         </FormErrorMessage>
                         <FormHelperText color='palette.1'>
                             {ok ? "A recovery email is sent to the email provided. Check your spam if you could not find the email." : null}
