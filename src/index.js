@@ -7,6 +7,20 @@ import reportWebVitals from './reportWebVitals';
 import { extendTheme, ChakraProvider } from '@chakra-ui/react';
 
 const theme = extendTheme({
+    components: {
+        Checkbox: {
+            baseStyle: {
+                control: {
+                    backgroundColor:'#222831',
+                    border : 'none',
+                    _checked: {
+                        bg: "#11999E", 
+                        borderColor: "transparent", 
+                    },
+                },
+            },
+        },
+    },
     colors : {
         palette : {
             1 : '#EEEEEE',
