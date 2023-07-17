@@ -15,8 +15,15 @@ export const Profile = () => {
     const { id } = useParams();
     const [ self ] = useAuth();
     const { showBoundary } = useErrorBoundary();
-    const [loading, setLoading] = useState({});
-    const [user, setUser] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState({
+        _id : '',
+        first_name : '',
+        last_name : '',
+        friends : [],
+        posts : [],
+
+    });
     const api_url = process.env.REACT_APP_API_URL;
 
     const fetchInfo = async () => {

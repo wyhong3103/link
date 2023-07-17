@@ -15,7 +15,7 @@ import useAuth from "../hooks/useAuth"
 export const Home = () => {
     const [ self ] = useAuth()
     const { showBoundary } = useErrorBoundary();
-    const [loading, setLoading] = useState({});
+    const [loading, setLoading] = useState(false);
     const [blogs, setBlogs] = useState([]);
     const api_url = process.env.REACT_APP_API_URL;
 
