@@ -28,7 +28,7 @@ export const Error = ({error, resetErrorBoundary}) => {
                     }}
                     color='palette.1'
                 >
-                    Home
+                    Back to Link
                 </Button>
             </VStack>
         </Flex>
