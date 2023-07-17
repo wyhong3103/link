@@ -32,6 +32,11 @@ export const NarrowNav = ({id}) => {
         }
     }
 
+    const go = (url) => {
+        navigate(url);
+        window.location.reload();
+    }
+
     return(
         <>
         
@@ -82,7 +87,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/friend-requests')}
+                            onClick={() => go('/friend-requests')}
                         >
                             <Text color='palette.1'>
                                 Friend Requests
@@ -97,7 +102,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/chat')}
+                            onClick={() => go('/chat')}
                         >
                             <Text color='palette.1'>
                                 Chat
@@ -112,7 +117,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/update')}
+                            onClick={() => go('/update')}
                         >
                             <Text color='palette.1'>
                                 Update Profile
@@ -127,7 +132,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate(`/profile/${id}`)}
+                            onClick={() => go(`/profile/${id}`)}
                         >
                             <Text color='palette.1'>
                                 View Profile
@@ -142,7 +147,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/friends')}
+                            onClick={() => go('/friends')}
                         >
                             <Text color='palette.1'>
                                 Friends
@@ -157,7 +162,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/users')}
+                            onClick={() => go('/users')}
                         >
                             <Text color='palette.1'>
                                 Link Up
@@ -172,7 +177,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/change-password')}
+                            onClick={() => go('/change-password')}
                         >
                             <Text color='palette.1'>
                                 Change Password
@@ -187,7 +192,7 @@ export const NarrowNav = ({id}) => {
                                     backgroundColor: '#222831',
                                 },
                             }}
-                            onClick={() => navigate('/logout')}
+                            onClick={() => go('/logout')}
                         >
                             <Text color='palette.1'>
                                 Log Out
@@ -217,8 +222,7 @@ export const NarrowNav = ({id}) => {
                     },
                 }}
                 onClick={() => {
-                    navigate('/')
-                    window.location.reload()
+                    go('/')
                 }}
             >
                 <Heading color='palette.5'

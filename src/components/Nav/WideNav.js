@@ -26,7 +26,13 @@ export const WideNav = ({last_name, id}) => {
     const search = () => {
         if (keyword.length > 0){
             navigate(`/search?keyword=${keyword}`)
+            window.location.reload();
         }
+    }
+
+    const go = (url) => {
+        navigate(url);
+        window.location.reload();
     }
 
     return(
@@ -50,8 +56,7 @@ export const WideNav = ({last_name, id}) => {
                         },
                     }}
                     onClick={() => {
-                        navigate('/')
-                        window.location.reload()
+                        go('/')
                     }}
                 >
                     <Heading color='palette.5'
@@ -110,7 +115,7 @@ export const WideNav = ({last_name, id}) => {
                         },
                     }}
                     p='15px'
-                    onClick={() => navigate('/friend-requests')}
+                    onClick={() => go('/friend-requests')}
                 >
                     <Image as={FriendRequestLogo} alt='friend-request-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
@@ -127,7 +132,7 @@ export const WideNav = ({last_name, id}) => {
                         },
                     }}
                     p='15px'
-                    onClick={() => navigate('/chat')}
+                    onClick={() => go('/chat')}
                 >
                     <Image as={ChatLogo} alt='chat-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
@@ -167,7 +172,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate('/update')}
+                                    onClick={() => go('/update')}
                                 >
                                     <Text color='palette.1'>
                                         Update Profile
@@ -182,7 +187,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate(`/profile/${id}`)}
+                                    onClick={() => go(`/profile/${id}`)}
                                 >
                                     <Text color='palette.1'>
                                         View Profile
@@ -197,7 +202,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate('/friends')}
+                                    onClick={() => go('/friends')}
                                 >
                                     <Text color='palette.1'>
                                         Friends
@@ -212,7 +217,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate('/users')}
+                                    onClick={() => go('/users')}
                                 >
                                     <Text color='palette.1'>
                                         Link Up
@@ -227,7 +232,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate('/change-password')}
+                                    onClick={() => go('/change-password')}
                                 >
                                     <Text color='palette.1'>
                                         Change Password
@@ -242,7 +247,7 @@ export const WideNav = ({last_name, id}) => {
                                             backgroundColor: '#222831',
                                         },
                                     }}
-                                    onClick={() => navigate('/logout')}
+                                    onClick={() => go('/logout')}
                                 >
                                     <Text color='palette.1'>
                                         Log Out
