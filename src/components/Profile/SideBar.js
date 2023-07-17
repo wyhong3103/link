@@ -202,7 +202,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
                 <VStack w='80%'>
                     {
                         barType[user.type].map(
-                            i => 
+                            btn => 
                             <Button border='none' bg='palette.2' w='100%'
                                 css={{
                                     '&:hover': {
@@ -212,10 +212,10 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
                                         backgroundColor: '#11999E',
                                     },
                                 }}
-                                onClick={i[1]}
+                                onClick={() => btn[1](user._id)}
                             >
                                 <Text color='palette.1'>
-                                    {i[0]}
+                                    {btn[0]}
                                 </Text>
                             </Button>
                         )
