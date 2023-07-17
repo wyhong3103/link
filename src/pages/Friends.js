@@ -30,6 +30,7 @@ export const Friends = () => {
         if (!res.ok){
             const error = new Error(data.error.result);
             error.status = res.status;
+            error.isLogged = true;
             showBoundary(error);
             return;
         }
@@ -65,7 +66,7 @@ export const Friends = () => {
 
         <VStack minH='100vh' bg='palette.4'>
             <Nav id={self.userid} last_name={self.last_name}/>
-            <UserList users={friends}/>
+            <UserList users={friends} fetchUsers={fetchFriends} selfid={self.userid}/>
         </VStack>
     )
 }

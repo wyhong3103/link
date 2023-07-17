@@ -1,17 +1,21 @@
-import { useNavigate } from "react-router-dom";
 import { 
     Flex, 
     VStack, 
     Image, 
     Button, 
     Link, 
-    HStack 
+    HStack,
+    Center,
+    Text
 } from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom";
+import { useErrorBoundary } from "react-error-boundary";
 
 
 
-export const UserList = ({users}) => {
+export const UserList = ({selfid, users, fetchUsers}) => {
     const navigate = useNavigate();
+    const { showBoundary } = useErrorBoundary();
     const api_url = process.env.REACT_APP_API_URL;
     const anonymousImage = `${api_url}/images/anonymous.jpg`;
 
@@ -19,20 +23,104 @@ export const UserList = ({users}) => {
         navigate(url);
     }
 
-    const link = (id) => {
-        // deal with API
+    const link = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend-request`,
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchUsers();
     }
 
-    const unlink = (id) => {
-        // deal with API
+    const unlink = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend/${selfid}`,
+            {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchUsers();
     }
 
-    const unsend = (id) => {
-        // deal with API
+    const unsend = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend-request/${selfid}`,
+            {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchUsers();
     }
 
-    const accept = (id) => {
-        // deal with API
+    const accept = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${selfid}/friend-request/${id}`,
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchUsers();
     }
 
     const userType = {
@@ -59,6 +147,7 @@ export const UserList = ({users}) => {
     return(
         <VStack gap='20px' p='20px'>
             {
+                users.length > 0 ?
                 users.map(
                     i => 
                     <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{base : '200px', sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px'>
@@ -71,23 +160,31 @@ export const UserList = ({users}) => {
                         <HStack gap='20px'>
                             {
                                 userType[i.type].map(
-                                    i => 
+                                    btn => 
                                     <Button border='none' bg='palette.2'
                                         css={{
                                             '&:hover': {
                                                 backgroundColor: '#11999E',
                                             },
                                         }}
-                                        onClick={i[1]}
+                                        onClick={() => btn[1](i._id)}
                                         color ='palette.1'
                                     >
-                                        {i[0]}
+                                        {btn[0]}
                                     </Button>
                                 )
                             }
                         </HStack>
                     </Flex>
                 )
+
+                :
+
+                <Center>
+                    <Text color='palette.1'>
+                        There is no one in this list.
+                    </Text>
+                </Center>
             }
         </VStack>
     )
