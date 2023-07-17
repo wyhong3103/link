@@ -49,14 +49,6 @@ export const Users = () => {
         }
     , [self])
 
-    useEffect(
-        () => {
-            (async () => {
-                console.log(users);
-            })()
-        }
-    , [users])
-
     return(
         loading ?
 
