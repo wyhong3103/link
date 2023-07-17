@@ -1,4 +1,4 @@
-import { CommentEditor } from "./Post/CommentEditor"
+import { Editor } from "./Editor"
 import { Comment } from "./Post/Comment"
 import { Content } from "./Content"
 import { Flex, VStack, Image, Button, Text, Link } from "@chakra-ui/react"
@@ -55,7 +55,7 @@ export const Post = ({post}) => {
                     }
                 )
             }
-            <CommentEditor/>
+            <Editor/>
         </VStack>
     )
 }
