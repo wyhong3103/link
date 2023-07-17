@@ -15,18 +15,23 @@ import {
     PopoverContent,
     PopoverBody,
 } from "@chakra-ui/react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 
-export const WideNav = ({last_name, id}) => {
+export const WideNav = ({last_name, id, fetchUsers}) => {
+    const location = useLocation();
     const navigate = useNavigate();
     const [keyword, setKeyword] = useState('');
 
     const search = () => {
-        if (keyword.length > 0){
+        if (location.pathname === '/search'){
+            // no refresh is needed if on the same page
             navigate(`/search?keyword=${keyword}`)
-            window.location.reload();
+            fetchUsers()
+        }
+        else if (keyword.length > 0){
+            navigate(`/search?keyword=${keyword}`)
         }
     }
 
