@@ -15,9 +15,11 @@ import {
     useDisclosure
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { useErrorBoundary } from 'react-error-boundary';
 
-export const SideBar = ({user}) => {
+export const SideBar = ({selfid, user, fetchInfo}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { showBoundary } = useErrorBoundary();
     const navigate = useNavigate();
     const api_url = process.env.REACT_APP_API_URL;
     const anonymousImage = `${api_url}/images/anonymous.jpg`;
@@ -26,20 +28,104 @@ export const SideBar = ({user}) => {
         navigate(url);
     }
 
-    const link = (id) => {
-        // deal with API
+    const link = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend-request`,
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchInfo();
     }
 
-    const unlink = (id) => {
-        // deal with API
+    const unlink = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend/${selfid}`,
+            {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchInfo();
     }
 
-    const unsend = (id) => {
-        // deal with API
+    const unsend = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend-request/${selfid}`,
+            {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchInfo();
     }
 
-    const accept = (id) => {
-        // deal with API
+    const accept = async (id) => {
+        const res = await fetch(
+            api_url + `/user/${id}/friend-request/${selfid}`,
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            error.isLogged = true;
+            showBoundary(error);
+            return;
+        }
+        
+        fetchInfo();
     }
 
 
