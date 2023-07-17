@@ -24,11 +24,11 @@ export const Error = ({error, resetErrorBoundary}) => {
                     }}
                     onClick={() => {
                         resetErrorBoundary()
-                        navigate('/')
+                        navigate((error.isLogged ? '/' : '/login'))
                     }}
                     color='palette.1'
                 >
-                    Back to Link
+                    {error.isLogged ? 'Home' : 'Login'}
                 </Button>
             </VStack>
         </Flex>
