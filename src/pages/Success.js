@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { Flex, VStack, Button,Text, Heading } from "@chakra-ui/react"
 
 export const Success = ({text}) => {
+    const navigate = useNavigate();
     return(
         <Flex bg='palette.4' minH={'100vh'} justify='center' align='center'>
             <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px'>
@@ -19,6 +21,7 @@ export const Success = ({text}) => {
                             backgroundColor: '#11999E',
                         },
                     }}
+                    onClick={() => navigate('/login')}
                 >
                     <Text color='palette.1'>Login</Text>
                 </Button>
