@@ -84,7 +84,7 @@ export const SideBar = ({user}) => {
                                     i => 
                                     <HStack w='100%' gap='20px'>
                                         <Image src={i.image || anonymousImage} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
-                                        <Link path={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
+                                        <Link href={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
                                             {`${i.first_name} ${i.last_name}`}
                                         </Link>
                                     </HStack>
