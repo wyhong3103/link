@@ -1,5 +1,14 @@
-import {Flex, Textarea, Checkbox, HStack, VStack, Text, Button, FormControl, FormErrorMessage} from '@chakra-ui/react'
+import { Content } from './Content'
 import {
+    Flex, 
+    Textarea, 
+    Checkbox, 
+    HStack, 
+    VStack, 
+    Text, 
+    Button, 
+    FormControl, 
+    FormErrorMessage,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -8,7 +17,6 @@ import {
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react'
-import { Content } from './Content'
 import { useState } from 'react'
 
 export const Editor = ({placeholder, cb, content, markdown, math}) => {
@@ -19,6 +27,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
     });
     const [error, setError] = useState("");
     const { isOpen : isOpenPreview, onOpen : onOpenPreview, onClose : onClosePreview } = useDisclosure()
+
 
     const handleInputChange = (field, value) => {
         const temp = {...formData};
@@ -40,6 +49,8 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
 
     return(
         <>
+        
+
         <Modal isOpen={isOpenPreview} onClose={onClosePreview}>
             <ModalOverlay />
             <ModalContent bg='palette.2'>
@@ -50,6 +61,8 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
                 </ModalBody>
             </ModalContent>
         </Modal>
+
+
         <VStack w='100%' gap='0'>
             <Flex bg='palette.2' w='100%' 
             borderTopLeftRadius='10px' 
@@ -58,6 +71,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
             justify='space-between'
             p='3px 10px 3px 10px' 
             >
+
                 <HStack w='100%'>
                     <Checkbox 
                     isChecked={formData.markdown}
@@ -76,6 +90,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
                         </Text>
                     </Checkbox>
                 </HStack>
+
                 <HStack>
                     <Button bg='none'
                         color='palette.5'
@@ -110,7 +125,9 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
                         Send
                     </Button>
                 </HStack>
+
             </Flex>
+
             <FormControl w='100%' isInvalid={error.length > 0}>
                 <Textarea
                     placeholder={placeholder}
@@ -130,6 +147,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
                     }
                 </FormErrorMessage>
             </FormControl>
+
         </VStack>
         </>
     )

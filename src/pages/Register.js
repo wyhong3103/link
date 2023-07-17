@@ -1,10 +1,23 @@
+import { 
+    Flex, 
+    Heading, 
+    VStack, 
+    Input, 
+    Button, 
+    InputRightElement, 
+    InputGroup, 
+    Text, 
+    FormControl, 
+    FormErrorMessage, 
+    FormLabel 
+} from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom";
-import { Flex, Heading, VStack, Input, Button, InputRightElement, InputGroup, Text, FormControl, FormErrorMessage, FormLabel } from "@chakra-ui/react"
 import { useState } from "react"
 
 export const Register = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
+    const [formData, 
+    setFormData] = useState({
         first_name : '',
         last_name : '',
         email : '',
@@ -49,11 +62,15 @@ export const Register = () => {
 
     return(
         <Flex bg='palette.4' minH={'100vh'} justify='center' align='center' p='10px'>
+
             <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px' w='400px'>
+
                 <Heading color='palette.5'>
                     Register
                 </Heading>
+
                 <VStack gap='10px' w='100%'>
+
                     <FormControl w='100%' isInvalid={error.first_name && error.first_name.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             First Name
@@ -73,6 +90,7 @@ export const Register = () => {
                             {error.first_name}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl w='100%' isInvalid={error.last_name && error.last_name.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Last Name
@@ -92,6 +110,7 @@ export const Register = () => {
                             {error.last_name}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl w='100%' isInvalid={error.email && error.email.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Email
@@ -112,6 +131,7 @@ export const Register = () => {
                             {error.email}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl w='100%' isInvalid={error.password && error.password.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Password
@@ -148,6 +168,7 @@ export const Register = () => {
                             {error.password}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl w='100%' isInvalid={error.repassword && error.repassword.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Confirm Password
@@ -184,6 +205,7 @@ export const Register = () => {
                             {error.repassword}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl isInvalid={error.result && error.result.length > 0}>
                         <FormErrorMessage>
                             {error.result}
@@ -192,7 +214,9 @@ export const Register = () => {
                     <Text color='palette.1'>
                         {ok ? "A verification email is sent. Check your spam if you could not find the email." : null}
                     </Text>
+
                 </VStack>
+
                 <VStack w='100%' gap='15px'>
                     <Button bg='palette.4' minW='100%'
                         css={{

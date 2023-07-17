@@ -1,6 +1,14 @@
-import { VStack, Button, Input, Text, Heading, InputGroup, InputRightElement} from "@chakra-ui/react"
-import { useState } from "react";
 import { Nav } from "../components/Nav"
+import { 
+    VStack, 
+    Button, 
+    Input, 
+    Text, 
+    Heading, 
+    InputGroup, 
+    InputRightElement
+} from "@chakra-ui/react"
+import { useState } from "react";
 
 export const ChangePassword = () => {
     /*
@@ -14,12 +22,17 @@ export const ChangePassword = () => {
 
     return(
         <VStack minH='100vh' bg='palette.4'>
+
             <Nav/>
+
             <VStack bg='palette.3' p='30px' borderRadius='10px' gap='20px' w='400px' margin='20px'> 
+
                 <Heading color='palette.1' fontSize='25px'>
                     Change Password
                 </Heading>
+
                 <VStack gap='10px' w='100%'>
+
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             Old Password
@@ -51,6 +64,7 @@ export const ChangePassword = () => {
                             </InputRightElement>
                         </InputGroup>
                     </VStack>
+
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             New Password
@@ -82,6 +96,7 @@ export const ChangePassword = () => {
                             </InputRightElement>
                         </InputGroup>
                     </VStack>
+
                     <VStack w='100%'>
                         <Text color='palette.1' w='100%'>
                             Confirm New Password
@@ -113,7 +128,9 @@ export const ChangePassword = () => {
                             </InputRightElement>
                         </InputGroup>
                     </VStack>
+
                 </VStack>
+
                 <VStack w='100%' gap='15px'>
                     <Button bg='palette.4' minW='100%'
                         css={{
@@ -128,6 +145,7 @@ export const ChangePassword = () => {
                         <Text color='palette.1'>Submit</Text>
                     </Button>
                 </VStack>
+
             </VStack>
         </VStack>
     )

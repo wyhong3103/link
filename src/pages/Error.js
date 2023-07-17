@@ -1,4 +1,10 @@
-import { Flex, VStack, Heading, Text, Button } from '@chakra-ui/react'
+import { 
+    Flex, 
+    VStack, 
+    Heading, 
+    Text, 
+    Button 
+} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 
 export const Error = ({error, resetErrorBoundary}) => {

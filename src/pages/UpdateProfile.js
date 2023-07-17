@@ -1,6 +1,14 @@
-import { VStack, Image, Button, Input, Text, Checkbox, Heading } from "@chakra-ui/react"
-import { useRef, useState } from "react";
 import { Nav } from "../components/Nav"
+import {
+    VStack,
+    Heading,
+    Button,
+    Checkbox,
+    Text,
+    Input,
+    Image
+} from '@chakra-ui/react'
+import { useRef, useState } from "react";
 
 export const UpdateProfile = () => {
     const [imageChecked, setImageChecked] = useState(false);

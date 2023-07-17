@@ -1,6 +1,6 @@
-import { VStack } from "@chakra-ui/react"
 import { Nav } from "../components/Nav"
 import { UserList } from "../components/UserList"
+import { VStack } from "@chakra-ui/react"
 
 export const FriendRequests = () => {
     return(

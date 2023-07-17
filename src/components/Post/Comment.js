@@ -1,8 +1,16 @@
-import { convertDateTime } from "../../util/util";
+import { ReactComponent as PencilLogo } from '../../assets/svgs/pencil.svg';
+import { ReactComponent as BinLogo } from '../../assets/svgs/bin.svg';
 import { Content } from "../Content"
 import { Editor } from "../Editor";
-import { Flex, Image, Text, Link, VStack, Box, HStack, Button } from '@chakra-ui/react'
-import {
+import { 
+    Flex, 
+    Image, 
+    Text, 
+    Link, 
+    VStack, 
+    Box, 
+    HStack, 
+    Button,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -11,15 +19,14 @@ import {
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react'
-import { ReactComponent as PencilLogo } from '../../assets/svgs/pencil.svg';
-import { ReactComponent as BinLogo } from '../../assets/svgs/bin.svg';
 import { useErrorBoundary } from "react-error-boundary";
+import { convertDateTime } from "../../util/util";
 
 export const Comment = ({comment, postid, fetchPosts, userid}) => {
     const {showBoundary} = useErrorBoundary();
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const api_url = process.env.REACT_APP_API_URL;
     const anonymousImage = `${api_url}/images/anonymous.jpg`;
-    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const update = async (clear, setError, formData) => {
         const res = await fetch(
@@ -74,6 +81,7 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
     return(
         <>
 
+
             <Modal isOpen={isOpen} onClose={onClose} size={{base :'md', md : 'lg'}}>
                 <ModalOverlay />
                 <ModalContent p='5px' bg='palette.3'>
@@ -84,6 +92,7 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
+
 
             <Flex direction='row' w='100%' gap='20px'>
                 <Box>

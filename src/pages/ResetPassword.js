@@ -1,8 +1,20 @@
-import { useNavigate } from "react-router-dom";
 import { Success } from "./Success"
-import { Flex, Heading, VStack, Input, Button, InputRightElement, InputGroup, Text, FormLabel, FormControl, FormErrorMessage } from "@chakra-ui/react"
+import { 
+    Flex, 
+    Heading, 
+    VStack, 
+    Input, 
+    Button, 
+    InputRightElement, 
+    InputGroup, 
+    Text, 
+    FormLabel, 
+    FormControl, 
+    FormErrorMessage 
+} from "@chakra-ui/react"
 import { useErrorBoundary } from "react-error-boundary";
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 export const ResetPassword = () => {
     /*
@@ -67,11 +79,15 @@ export const ResetPassword = () => {
         <Success text="Password has been reset."/>
         :
         <Flex bg='palette.4' minH={'100vh'} justify='center' align='center'>
+
             <VStack p='30px' bg='palette.3' borderRadius='10px' gap='30px' w='400px'>
+
                 <Heading color='palette.5'>
                     Reset Password
                 </Heading>
+
                 <VStack gap='10px' w='100%'>
+
                     <FormControl w='100%' isInvalid={error.password && error.password.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Password
@@ -108,6 +124,7 @@ export const ResetPassword = () => {
                             {error.password}
                         </FormErrorMessage>
                     </FormControl>
+
                     <FormControl w='100%' isInvalid={error.repassword && error.repassword.length > 0}>
                         <FormLabel color='palette.1' w='100%'>
                             Confirm Password
@@ -144,7 +161,9 @@ export const ResetPassword = () => {
                             {error.repassword}
                         </FormErrorMessage>
                     </FormControl>
+
                 </VStack>
+
                 <VStack w='100%' gap='15px'>
                     <Button bg='palette.4' minW='100%'
                         css={{

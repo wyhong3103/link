@@ -1,9 +1,15 @@
-import { useErrorBoundary } from "react-error-boundary";
 import { Editor } from "../components/Editor"
-import { VStack, Flex, Box, Spinner, Text } from "@chakra-ui/react"
 import { Nav } from "../components/Nav"
 import { Post } from "../components/Post"
+import { 
+    VStack, 
+    Flex, 
+    Box, 
+    Spinner, 
+    Text 
+} from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import { useErrorBoundary } from "react-error-boundary";
 import useAuth from "../hooks/useAuth"
 
 export const Home = () => {

@@ -1,5 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { Flex, VStack, Image, Button, Link, HStack } from "@chakra-ui/react"
+import { 
+    Flex, 
+    VStack, 
+    Image, 
+    Button, 
+    Link, 
+    HStack 
+} from "@chakra-ui/react"
+
+
 
 export const UserList = ({friendlist, users}) => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
-import { Flex, VStack } from "@chakra-ui/react"
 import { SideBar } from "../components/Profile/SideBar"
 import { Post } from "../components/Post"
 import { Nav } from "../components/Nav"
+import { Flex, VStack } from "@chakra-ui/react"
 
 export const Profile = () => {
     return(

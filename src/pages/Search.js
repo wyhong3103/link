@@ -1,6 +1,9 @@
-import { VStack, Text } from "@chakra-ui/react"
 import { Nav } from "../components/Nav"
 import { UserList } from "../components/UserList"
+import { 
+    VStack, 
+    Text 
+} from "@chakra-ui/react"
 
 export const Search = () => {
     return(

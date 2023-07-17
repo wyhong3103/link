@@ -1,5 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Flex, VStack, Button,Text, Heading } from "@chakra-ui/react"
+import { 
+    Flex, 
+    VStack, 
+    Button,
+    Text, 
+    Heading 
+} from "@chakra-ui/react"
 
 export const Success = ({text}) => {
     const navigate = useNavigate();

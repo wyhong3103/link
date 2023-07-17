@@ -1,14 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import { Flex, VStack, HStack, Heading, Text, Input, Image, Button } from "@chakra-ui/react"
-import {
+import { ReactComponent as ArrowDownLogo } from '../../assets/svgs/arrow-down.svg';
+import { ReactComponent as ChatLogo } from '../../assets/svgs/chat.svg';
+import { ReactComponent as FriendRequestLogo } from '../../assets/svgs/friend-requests.svg';
+import { 
+    Flex,
+    VStack, 
+    HStack, 
+    Heading, 
+    Text, 
+    Input, 
+    Image, 
+    Button ,
     Popover,
     PopoverTrigger,
     PopoverContent,
     PopoverBody,
-} from '@chakra-ui/react'
-import { ReactComponent as ArrowDownLogo } from '../../assets/svgs/arrow-down.svg';
-import { ReactComponent as ChatLogo } from '../../assets/svgs/chat.svg';
-import { ReactComponent as FriendRequestLogo } from '../../assets/svgs/friend-requests.svg';
+} from "@chakra-ui/react"
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -27,7 +34,9 @@ export const WideNav = ({last_name, id}) => {
         direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='sticky' top='0'
         zIndex='99' shadow='base'
         >
+
             <HStack gap='40px'>
+
                 <Button bg='none'
                     color='palette.5'
                     css={{
@@ -59,6 +68,7 @@ export const WideNav = ({last_name, id}) => {
                         Link
                     </Heading>
                 </Button>
+
                     <HStack>
                         <Input
                             placeholder='Search for friends to link'
@@ -83,8 +93,12 @@ export const WideNav = ({last_name, id}) => {
                         <Text color='palette.1'>Search</Text>
                         </Button>
                     </HStack>
+
             </HStack>
+
             <HStack gap='20px'>
+
+
                 <Button
                     bg='none'
                     css={{
@@ -100,6 +114,8 @@ export const WideNav = ({last_name, id}) => {
                 >
                     <Image as={FriendRequestLogo} alt='friend-request-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
+
+
                 <Button
                     bg='none'
                     css={{
@@ -115,6 +131,8 @@ export const WideNav = ({last_name, id}) => {
                 >
                     <Image as={ChatLogo} alt='chat-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
+                
+
                 <Popover placement='bottom-start'>
                     <PopoverTrigger>
                     <Button
@@ -234,6 +252,8 @@ export const WideNav = ({last_name, id}) => {
                         </PopoverBody>
                     </PopoverContent>
                 </Popover>
+
+
             </HStack>
         </Flex>
     )
