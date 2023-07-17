@@ -23,10 +23,12 @@ export const Home = () => {
 
         const data = await res.json();
 
-        setBlogs([...data.posts]);
+
+
+        setBlogs([...(data.posts.reverse())]);
     }
 
-    const submit = async (setError, formData) => {
+    const submit = async (clear, setError, formData) => {
         const res = await fetch(
             api_url + '/post',
             {
@@ -43,6 +45,7 @@ export const Home = () => {
 
         if (res.ok){
             fetchPosts();
+            clear();
         } else if (res.status <= 402){
             setError(data.error.content);
         } else {

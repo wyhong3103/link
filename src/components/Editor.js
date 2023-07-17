@@ -26,9 +26,17 @@ export const Editor = ({placeholder, cb}) => {
         setFormData({...temp});
     }
 
-    const submit = () => {
-        cb(setError, formData);
+    const clear = () => {
+        setFormData({content : '',
+            markdown : false,
+            math : false
+        });
     }
+
+    const submit = () => {
+        cb(clear, setError, formData);
+    }
+
 
     return(
         <>

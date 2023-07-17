@@ -55,7 +55,7 @@ export const Post = ({post, userid, fetchPosts}) => {
         }
     }
 
-    const submit = async (setError, formData) => {
+    const submit = async (clear, setError, formData) => {
         const res = await fetch(
             api_url + `/post/${post._id}/comment`,
             {
@@ -72,6 +72,7 @@ export const Post = ({post, userid, fetchPosts}) => {
 
         if (res.ok){
             fetchPosts();
+            clear();
         } else if (res.status <= 402){
             setError(data.error.content);
         } else {
