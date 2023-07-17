@@ -29,7 +29,12 @@ export const Home = () => {
 
         const data = await res.json();
 
-
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            showBoundary(error);
+            return;
+        }
 
         setBlogs([...(data.posts.reverse())]);
     }

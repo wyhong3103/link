@@ -31,7 +31,7 @@ export const Profile = () => {
 
         if (!res.ok){
             const error = new Error(data.error.result);
-            error.status = res.json();
+            error.status = res.status;
             showBoundary(error);
             return;
         }
