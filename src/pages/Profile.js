@@ -41,6 +41,7 @@ export const Profile = () => {
         if (!res.ok){
             const error = new Error(data.error.result);
             error.status = res.status;
+            error.isLogged = true;
             showBoundary(error);
             return;
         }

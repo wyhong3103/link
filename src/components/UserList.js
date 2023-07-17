@@ -10,8 +10,10 @@ import {
 
 
 
-export const UserList = ({friendlist, users}) => {
+export const UserList = ({users}) => {
     const navigate = useNavigate();
+    const api_url = process.env.REACT_APP_API_URL;
+    const anonymousImage = `${api_url}/images/anonymous.jpg`;
 
     const go = (url) => {
         navigate(url);
@@ -34,6 +36,8 @@ export const UserList = ({friendlist, users}) => {
     }
 
     const userType = {
+        self : [
+        ],
         friend : [
             ['Unlink', (id) => unlink(id)],
             ['Chat', (id) => go('/chat?friendid='+ id)]
@@ -57,10 +61,10 @@ export const UserList = ({friendlist, users}) => {
             {
                 users.map(
                     i => 
-                    <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px'>
+                    <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{base : '200px', sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px'>
                         <HStack gap='20px'>
-                            <Image src={i.image} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
-                            <Link path={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
+                            <Image src={i.image || anonymousImage} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
+                            <Link href={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
                                 {`${i.first_name} ${i.last_name}`}
                             </Link>
                         </HStack>
