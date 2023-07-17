@@ -1,68 +1,84 @@
 import { SideBar } from "../components/Profile/SideBar"
 import { Post } from "../components/Post"
 import { Nav } from "../components/Nav"
-import { Flex, VStack } from "@chakra-ui/react"
+import { 
+    Flex, 
+    VStack,
+    Spinner, 
+} from "@chakra-ui/react"
+import { useEffect, useState } from "react"
+import { useErrorBoundary } from "react-error-boundary"
+import { useParams } from "react-router-dom"
+import useAuth from "../hooks/useAuth"
 
 export const Profile = () => {
+    const { id } = useParams();
+    const [ self ] = useAuth();
+    const { showBoundary } = useErrorBoundary();
+    const [loading, setLoading] = useState({});
+    const [user, setUser] = useState([]);
+    const api_url = process.env.REACT_APP_API_URL;
+
+    const fetchInfo = async () => {
+        const res = await fetch(
+            api_url + `/user/${id}`,
+            {
+                credentials : 'include'
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.json();
+            showBoundary(error);
+            return;
+        }
+        data.user.posts = [...(data.user.posts.reverse())]
+
+        setUser({...data.user});
+    }
+
+    useEffect(
+        () => {
+            (async () => {
+                if (user){
+                    await fetchInfo();
+                    setLoading(false);
+                }
+            })()
+        }
+    , [user])
+
     return(
+        loading ?
+
+        <Flex bg='palette.4' minH='100vh' justify='center' align='center'>
+            <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='palette.6'
+            size='xl'
+            />
+        </Flex>
+
+        :
+
         <VStack minH='100vh' bg='palette.4'>
             <Nav/>
             <Flex direction={{base : 'column', lg : 'row'}} justify='space-around' gap={{base : '20px', lg : '0px' }} w='100%' p={{base : '5px', md : '20px'}} align={{base : 'center', lg : 'start'}}>
-                <SideBar url="https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg"
-                    type='self'
-                    friends={
-                        [
-                            {
-                                first_name : "Barry",
-                                last_name : "Allen",
-                                image : "https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg",
-                                _id : "test"
-                            },
-                            {
-                                first_name : "Barry",
-                                last_name : "Allen",
-                                image : "https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg",
-                                _id : "test"
-                            }
-                        ]
-                    }   
+                <SideBar 
+                    user={user}
                 />
                 <VStack>
-                    <Post
-                        post={
-                            {
-                                author : {
-                                    _id : 'test', 
-                                    first_name : 'Barry', 
-                                    last_name : 'Allen', 
-                                    image : 'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'
-                                } ,
-                                content : "Pellentesque ut iaculis lectus. Maecenas scelerisque fringilla massa id dapibus. Proin ullamcorper risus in orci faucibus aliquam. Nam accumsan porttitor lorem, et dignissim augue venenatis sed. Sed suscipit purus nunc, at hendrerit sapien gravida id. Suspendisse at lorem mollis, cursus mauris quis, aliquet lectus. Suspendisse efficitur hendrerit purus, vel interdum velit tincidunt eu. Vivamus sit amet malesuada felis, ac fermentum nisi. Maecenas porttitor nunc in semper egestas. Mauris et sem lacinia, ultrices ligula nec, volutpat diam. Donec mollis tempor elit, a accumsan urna porta in. Pellentesque non odio ac mi pulvinar convallis ac ut nisl. Vivamus.", 
-                                markdown : true, 
-                                math : true,
-                                date : '15 July 2023', 
-                                image : '',
-                                comments : 
-                                [ 
-                                    {
-                                        _id : 'test', 
-                                        content : "Pellentesque ut iaculis lectus. Maecenas scelerisque fringilla massa id dapibus. Proin ullamcorper risus in orci faucibus aliquam. Nam accumsan porttitor lorem, et dignissim augue venenatis sed. Sed suscipit purus nunc, at hendrerit sapien gravida id. Suspendisse at lorem mollis, cursus mauris quis, aliquet lectus. Suspendisse efficitur hendrerit purus, vel interdum velit tincidunt eu. Vivamus sit amet malesuada felis, ac fermentum nisi. Maecenas porttitor nunc in semper egestas. Mauris et sem lacinia, ultrices ligula nec, volutpat diam. Donec mollis tempor elit, a accumsan urna porta in. Pellentesque non odio ac mi pulvinar convallis ac ut nisl. Vivamus.", 
-                                        author : {
-                                            _id : 'test', 
-                                            first_name : "Barry", 
-                                            last_name : "Allen", 
-                                            image : 'https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'
-                                        } ,
-                                        markdown : true,
-                                        math : true,
-                                        date : "15 July 2023"
-                                    } 
-                                ],
-                                likes : [1, 2, 3, 4, 5],
-                            }
-                        }
-                        
-                    />
+                    {
+                        user.posts.map(
+                            i => 
+                            <Post post={i} userid={self.userid} fetchPosts={fetchInfo}/>
+                        )
+                    }
                 </VStack> 
             </Flex>
         </VStack>

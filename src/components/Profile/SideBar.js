@@ -1,6 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import {VStack, Button, Image, Text, HStack, Link} from '@chakra-ui/react';
 import {
+    VStack, 
+    Button, 
+    Image, 
+    Text, 
+    HStack, 
+    Link, 
+    Center,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -8,11 +13,14 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
-export const SideBar = ({url, type, id, friends}) => {
+export const SideBar = ({user}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate();
+    const api_url = process.env.REACT_APP_API_URL;
+    const anonymousImage = `${api_url}/images/anonymous.jpg`;
 
     const go = (url) => {
         navigate(url);
@@ -26,33 +34,56 @@ export const SideBar = ({url, type, id, friends}) => {
         // deal with API
     }
 
+    const unsend = (id) => {
+        // deal with API
+    }
+
+    const accept = (id) => {
+        // deal with API
+    }
+
+
     const barType = {
         self : [
             ['Update Profile', () => go('/update')]
         ],
         friend : [
-            ['Unlink', () => unlink(id)],
-            ['Chat', () => go('/chat?friendid='+ id)]
+            ['Unlink', () => unlink(user._id)],
+            ['Chat', () => go('/chat?friendid='+ user._id)]
         ],
         stranger : [
-            ['Link', () => link(id)]
+            ['Link', () => link(user._id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
+        ],
+        sent : [
+            ['Requested', (id) => unsend(id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
+        ],
+        accept : [
+            ['Accept', (id) => accept(id)],
+            ['Chat', (id) => go('/chat?friendid='+ id)]
         ]
+
     }
 
     return (
-        <VStack>
-            <Modal isOpen={isOpen} onClose={onClose} scrollBehavior='inside'> 
-                <ModalOverlay />
-                <ModalContent bg='palette.3'>
-                    <ModalHeader color='palette.1'>Friends</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody >
+        <>
+        
+
+        <Modal isOpen={isOpen} onClose={onClose} scrollBehavior='inside'> 
+            <ModalOverlay />
+            <ModalContent bg='palette.3' p='10px'>
+                <ModalHeader color='palette.1'>Friends</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody >
+                    {
+                        user.friends.length > 0 ? 
                         <VStack p='10px' borderRadius='10px' w='250px' gap='20px'>
                             {
-                                friends.map(
+                                user.friends.map(
                                     i => 
                                     <HStack w='100%' gap='20px'>
-                                        <Image src={i.image} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
+                                        <Image src={i.image || anonymousImage} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
                                         <Link path={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
                                             {`${i.first_name} ${i.last_name}`}
                                         </Link>
@@ -60,19 +91,31 @@ export const SideBar = ({url, type, id, friends}) => {
                                 )
                             }
                         </VStack>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+
+                        :
+
+                        <Center>
+                            <Text color='palette.1'>
+                                {user.last_name} has no friends yet.
+                            </Text>
+                        </Center>
+                    }
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+        
+
+        <VStack>
             <VStack w='300px'p='20px' borderRadius='10px' gap='20px'>
                 <VStack>
-                    <Image src={url} alt='avatar' borderRadius='100%' w='150px'/>
+                    <Image src={user.image || anonymousImage} alt='avatar' borderRadius='100%' w='150px'/>
                     <Text color='palette.1' fontWeight='800'>
-                        James
+                        {`${user.first_name} ${user.last_name}`}
                     </Text>
                 </VStack>
                 <VStack w='80%'>
                     {
-                        barType[type].map(
+                        barType[user.type].map(
                             i => 
                             <Button border='none' bg='palette.2' w='100%'
                                 css={{
@@ -109,5 +152,7 @@ export const SideBar = ({url, type, id, friends}) => {
                 </VStack>
             </VStack>
         </VStack>
+
+        </>
     )
 }
