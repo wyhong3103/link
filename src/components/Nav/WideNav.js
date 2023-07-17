@@ -110,7 +110,7 @@ export const WideNav = ({last_name, id}) => {
                         },
                     }}
                     p='15px'
-                    onClick={() => navigate('/friends')}
+                    onClick={() => navigate('/friend-requests')}
                 >
                     <Image as={FriendRequestLogo} alt='friend-request-logo' fill='palette.1' width='25px' h='25px'/>
                 </Button> 
