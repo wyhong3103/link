@@ -67,7 +67,7 @@ export const Profile = () => {
         :
 
         <VStack minH='100vh' bg='palette.4'>
-            <Nav/>
+            <Nav last_name={self.last_name} id={self.userid}/>
             <Flex direction={{base : 'column', lg : 'row'}} justify='space-around' gap={{base : '20px', lg : '0px' }} w='100%' p={{base : '5px', md : '20px'}} align={{base : 'center', lg : 'start'}}>
                 <SideBar 
                     user={user}
