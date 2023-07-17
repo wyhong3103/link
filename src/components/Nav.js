@@ -4,7 +4,7 @@ import { useBreakpointValue } from "@chakra-ui/react";
 
 
 export const Nav = ({last_name, id, fetchUsers}) => {
-    const isMobile = useBreakpointValue({ base: true, lg: false });
+    const isMobile = useBreakpointValue({ base: true, lg: false }, { ssr: false });
   
     return (
       <>
