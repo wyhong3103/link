@@ -1,3 +1,4 @@
+import { useErrorBoundary } from "react-error-boundary";
 import { Editor } from "../components/Editor"
 import { VStack, Flex, Box, Spinner, Text } from "@chakra-ui/react"
 import { Nav } from "../components/Nav"
@@ -7,24 +8,56 @@ import useAuth from "../hooks/useAuth"
 
 export const Home = () => {
     const [user] = useAuth()
+    const { showBoundary } = useErrorBoundary();
     const [loading, setLoading] = useState({});
     const [blogs, setBlogs] = useState([]);
     const api_url = process.env.REACT_APP_API_URL;
+
+    const fetchPosts = async () => {
+        const res = await fetch(
+            api_url + '/post',
+            {
+                credentials : 'include'
+            }
+        );
+
+        const data = await res.json();
+
+        setBlogs([...data.posts]);
+    }
+
+    const submit = async (setError, formData) => {
+        const res = await fetch(
+            api_url + '/post',
+            {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                credentials : 'include',
+                body: JSON.stringify(formData)
+            }
+        );
+        
+        const data = await res.json();
+
+        if (res.ok){
+            fetchPosts();
+        } else if (res.status <= 402){
+            setError(data.error.content);
+        } else {
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            showBoundary(error) ;
+        }
+    }
+
 
     useEffect(
         () => {
             (async () => {
                 if (user){
-                    const res = await fetch(
-                        api_url + '/post',
-                        {
-                            credentials : 'include'
-                        }
-                    );
-
-                    const data = await res.json();
-
-                    setBlogs([...data.posts]);
+                    await fetchPosts();
                     setLoading(false);
                 }
             })()
@@ -51,13 +84,13 @@ export const Home = () => {
             <Flex p={{base : '5px', md : '20px'}} w='100%'>
                 <VStack w='100%' gap='30px'>
                     <Box w={{base : '400px', md :'700px'}} bg='palette.3' p='10px' borderRadius='10px'>
-                        <Editor placeholder="Write a post."/>
+                        <Editor placeholder="Write a post." cb={submit}/>
                     </Box>
                     {
                         blogs.length > 0 ?
                         blogs.map(
                             i => 
-                            <Post post={i}/>
+                            <Post post={i} userid={user.userid} fetchPosts={fetchPosts}/>
                         )
                         :
                         <Text color='palette.1'>

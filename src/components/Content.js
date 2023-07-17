@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react"
 
-export const Content = ({content, markdown, math, image}) => {
+export const Content = ({content, markdown, math}) => {
     return(
         <Box w='100%' bg='palette.4' p='10px' borderRadius='10px'>
             <p 
