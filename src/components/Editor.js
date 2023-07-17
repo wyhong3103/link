@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Content } from './Content'
 
-export const Editor = () => {
+export const Editor = ({placeholder}) => {
     const { isOpen : isOpenPreview, onOpen : onOpenPreview, onClose : onClosePreview } = useDisclosure()
 
     return(
@@ -27,7 +27,7 @@ export const Editor = () => {
         </Modal>
         <VStack w='100%' gap='0'>
             <Textarea
-                placeholder='Leave a comment.'
+                placeholder={placeholder}
                 bg='palette.4'
                 border='none'
                 resize='none'

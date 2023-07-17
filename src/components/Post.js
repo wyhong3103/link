@@ -55,7 +55,7 @@ export const Post = ({post}) => {
                     }
                 )
             }
-            <Editor/>
+            <Editor placeholder="Write a comment."/>
         </VStack>
     )
 }

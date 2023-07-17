@@ -10,7 +10,7 @@ export const Home = () => {
             <Flex p={{base : '5px', md : '20px'}} w='100%'>
                 <VStack w='100%' gap='30px'>
                     <Box w={{base : '400px', md :'700px'}} bg='palette.3' p='10px' borderRadius='10px'>
-                        <Editor/>
+                        <Editor placeholder="Write a post."/>
                     </Box>
                     <Post
                         post={
