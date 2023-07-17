@@ -42,7 +42,7 @@ export const UserList = ({friendlist, users}) => {
             ['Link', (id) => link(id)],
             ['Chat', (id) => go('/chat?friendid='+ id)]
         ],
-        requested : [
+        sent : [
             ['Requested', (id) => unsend(id)],
             ['Chat', (id) => go('/chat?friendid='+ id)]
         ],
