@@ -13,7 +13,7 @@ import { useErrorBoundary } from "react-error-boundary";
 import useAuth from "../hooks/useAuth"
 
 export const Home = () => {
-    const [user] = useAuth()
+    const [ self ] = useAuth()
     const { showBoundary } = useErrorBoundary();
     const [loading, setLoading] = useState({});
     const [blogs, setBlogs] = useState([]);
@@ -65,13 +65,13 @@ export const Home = () => {
     useEffect(
         () => {
             (async () => {
-                if (user){
+                if (self){
                     await fetchPosts();
                     setLoading(false);
                 }
             })()
         }
-    , [user])
+    , [self])
 
 
     return(
@@ -88,8 +88,9 @@ export const Home = () => {
         </Flex>
 
         :
+
         <VStack bg='palette.4' minH='100vh'>
-            <Nav last_name={user.last_name} id={user.userid}/>
+            <Nav last_name={self.last_name} id={self.userid}/>
             <Flex p={{base : '5px', md : '20px'}} w='100%'>
                 <VStack w='100%' gap='30px'>
                     <Box w={{base : '400px', md :'700px'}} bg='palette.3' p='10px' borderRadius='10px'>
@@ -99,7 +100,7 @@ export const Home = () => {
                         blogs.length > 0 ?
                         blogs.map(
                             i => 
-                            <Post post={i} userid={user.userid} fetchPosts={fetchPosts}/>
+                            <Post post={i} userid={self.userid} fetchPosts={fetchPosts}/>
                         )
                         :
                         <Text color='palette.1'>
