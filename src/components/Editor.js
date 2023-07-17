@@ -11,11 +11,11 @@ import {
 import { Content } from './Content'
 import { useState } from 'react'
 
-export const Editor = ({placeholder, cb}) => {
+export const Editor = ({placeholder, cb, content, markdown, math}) => {
     const [formData, setFormData] = useState({
-        content : '',
-        markdown : false,
-        math : false
+        content : content || '',
+        markdown : markdown || false,
+        math : math || false
     });
     const [error, setError] = useState("");
     const { isOpen : isOpenPreview, onOpen : onOpenPreview, onClose : onClosePreview } = useDisclosure()
