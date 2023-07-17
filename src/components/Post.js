@@ -15,6 +15,45 @@ export const Post = ({post, userid, fetchPosts}) => {
 
     */
 
+    const like = async () => {
+        const res = await fetch(
+            api_url + `/post/${post._id}/like`,
+            {
+                method: 'POST',
+                credentials : 'include',
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            showBoundary(error) ;
+        }else{
+            fetchPosts();
+        }
+    }
+
+    const unlike = async () => {
+        const res = await fetch(
+            api_url + `/post/${post._id}/like`,
+            {
+                method: 'DELETE',
+                credentials : 'include',
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok){
+            const error = new Error(data.error.result);
+            error.status = res.status;
+            showBoundary(error) ;
+        }else{
+            fetchPosts();
+        }
+    }
 
     const submit = async (setError, formData) => {
         const res = await fetch(
@@ -69,9 +108,12 @@ export const Post = ({post, userid, fetchPosts}) => {
                             backgroundColor: '#11999E',
                         },
                     }}
+                    onClick={
+                        !post.likes.includes(userid) ? like : unlike
+                    }
                 >
                     <Text color='palette.1'>
-                        Like
+                        {!post.likes.includes(userid) ? 'Like' : 'Unlike'}
                     </Text>
                 </Button>
             </Flex>
