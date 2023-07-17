@@ -43,13 +43,13 @@ export const Profile = () => {
     useEffect(
         () => {
             (async () => {
-                if (user){
+                if (self){
                     await fetchInfo();
                     setLoading(false);
                 }
             })()
         }
-    , [user])
+    , [self])
 
     return(
         loading ?
