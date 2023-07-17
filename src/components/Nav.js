@@ -3,16 +3,16 @@ import { WideNav } from "./Nav/WideNav"
 import { useBreakpointValue } from "@chakra-ui/react";
 
 
-export const Nav = () => {
+export const Nav = ({last_name, id}) => {
     const isMobile = useBreakpointValue({ base: true, lg: false });
   
     return (
       <>
         {
             isMobile ? 
-            <NarrowNav/>
+            <NarrowNav id={id}/>
             :
-            <WideNav/>
+            <WideNav last_name={last_name} id={id}/>
         }
       </>
     );

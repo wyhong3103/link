@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Flex, VStack, HStack, Heading, Text, Input, Image, Button, useDisclosure } from "@chakra-ui/react"
 import {
     Modal,
@@ -7,20 +8,55 @@ import {
 } from '@chakra-ui/react'
 import { ReactComponent as SearchLogo } from '../../assets/svgs/search.svg';
 import { ReactComponent as BurgerLogo } from '../../assets/svgs/burger.svg';
+import { useState } from "react";
 
 
-export const NarrowNav = () => {
+export const NarrowNav = ({id}) => {
+    const navigate = useNavigate();
     const { isOpen : isOpenBurger, onOpen : onOpenBurger, onClose : onCloseBurger } = useDisclosure()
     const { isOpen : isOpenSearch, onOpen : onOpenSearch, onClose : onCloseSearch } = useDisclosure()
+    const [keyword, setKeyword] = useState('');
+
+    const search = () => {
+        if (keyword.length > 0){
+            navigate(`/search?keyword=${keyword}`)
+            window.location.reload();
+        }
+    }
 
     return(
         <Flex bg='palette.3' 
         direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='sticky' top='0'
         zIndex='99' shadow='base'
         >
-            <Heading color='palette.5'>
-                Link
-            </Heading>
+            <Button bg='none'
+                color='palette.5'
+                css={{
+                    '&:hover': {
+                        backgroundColor : 'transparent',
+                        color: '#11999E',
+                    },
+                    '&:active': {
+                        backgroundColor : 'transparent',
+                        color: '#11999E',
+                    },
+                }}
+                onClick={() => navigate('/')}
+            >
+                <Heading color='palette.5'
+                    css={{
+                        '&': {
+                            transition : 'all 0.3s'
+                        },
+                        '&:hover': {
+                            color : '#a7fcee',
+                            textShadow: '0 0px 30px #afe0f5'
+                        },
+                    }}
+                >
+                    Link
+                </Heading>
+            </Button>
             <HStack gap='5px'>
                 <Button
                     bg='none'
@@ -63,6 +99,8 @@ export const NarrowNav = () => {
                                 border='none'
                                 bg='palette.2'
                                 color='palette.1'
+                                value={keyword}
+                                onChange={(e) => setKeyword(e.target.value)}
                             />
                             <Button bg='palette.4'
                                 css={{
@@ -73,6 +111,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#11999E',
                                     },
                                 }}
+                                onClick={search}
                             >
                             <Text color='palette.1'>Search</Text>
                             </Button>
@@ -94,6 +133,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/friend-requests')}
                             >
                                 <Text color='palette.1'>
                                     Friend Requests
@@ -108,6 +148,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/chat')}
                             >
                                 <Text color='palette.1'>
                                     Chat
@@ -122,6 +163,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/update')}
                             >
                                 <Text color='palette.1'>
                                     Update Profile
@@ -136,6 +178,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate(`/profile/${id}`)}
                             >
                                 <Text color='palette.1'>
                                     View Profile
@@ -150,6 +193,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/friends')}
                             >
                                 <Text color='palette.1'>
                                     Friends
@@ -164,6 +208,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/users')}
                             >
                                 <Text color='palette.1'>
                                     Link Up
@@ -178,6 +223,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/change-password')}
                             >
                                 <Text color='palette.1'>
                                     Change Password
@@ -192,6 +238,7 @@ export const NarrowNav = () => {
                                         backgroundColor: '#222831',
                                     },
                                 }}
+                                onClick={() => navigate('/logout')}
                             >
                                 <Text color='palette.1'>
                                     Log Out
