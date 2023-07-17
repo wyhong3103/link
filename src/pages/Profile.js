@@ -5,6 +5,8 @@ import {
     Flex, 
     VStack,
     Spinner, 
+    Text,
+    Center
 } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useErrorBoundary } from "react-error-boundary"
@@ -79,6 +81,10 @@ export const Profile = () => {
                 <SideBar 
                     user={user}
                 />
+                {
+                
+                user.posts.length > 0 ?
+
                 <VStack>
                     {
                         user.posts.map(
@@ -87,6 +93,16 @@ export const Profile = () => {
                         )
                     }
                 </VStack> 
+
+                :
+
+                <Center w='700px' minH='200px'>
+                    <Text color='palette.1'>
+                        {user.last_name} has no post yet.
+                    </Text>
+                </Center>
+
+                }
             </Flex>
         </VStack>
     )
