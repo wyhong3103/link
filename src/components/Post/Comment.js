@@ -98,15 +98,12 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
                 <Box>
                     <Image src={`${comment.author.image}` || anonymousImage} w='50px' objectFit='cover' borderRadius='100%'/>
                 </Box>
-                <VStack w='100%'> 
-                        <Flex direction='row' w='100%' justify='space-between' align='center'>
+                <VStack w='100%'>  
+                        <Flex direction='row' w='100%' justify='space-between' align='end'>
                             <Flex direction='row' w='100%'>
                                 <Link color='palette.1' href={`/profile/${comment.author._id}`}>
                                     {`${comment.author.first_name} ${comment.author.last_name}` }
                                 </Link>
-                                <Text color='palette.1'>
-                                    , {convertDateTime(comment.date)}
-                                </Text>
                             </Flex>
                             {
                             userid === comment.author._id &&
