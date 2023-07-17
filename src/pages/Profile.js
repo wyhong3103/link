@@ -81,6 +81,8 @@ export const Profile = () => {
             <Flex direction={{base : 'column', lg : 'row'}} justify='space-around' gap={{base : '20px', lg : '0px' }} w='100%' p={{base : '5px', md : '20px'}} align={{base : 'center', lg : 'start'}}>
                 <SideBar 
                     user={user}
+                    selfid={self.userid}
+                    fetchInfo={fetchInfo}
                 />
                 {
                 
