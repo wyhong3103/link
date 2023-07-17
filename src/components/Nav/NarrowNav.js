@@ -41,7 +41,10 @@ export const NarrowNav = ({id}) => {
                         color: '#11999E',
                     },
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => {
+                    navigate('/')
+                    window.location.reload()
+                }}
             >
                 <Heading color='palette.5'
                     css={{

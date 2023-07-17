@@ -40,7 +40,10 @@ export const WideNav = ({last_name, id}) => {
                             color: '#11999E',
                         },
                     }}
-                    onClick={() => navigate('/')}
+                    onClick={() => {
+                        navigate('/')
+                        window.location.reload()
+                    }}
                 >
                     <Heading color='palette.5'
                         css={{
