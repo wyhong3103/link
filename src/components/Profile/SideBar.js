@@ -169,7 +169,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
                                 user.friends.map(
                                     i => 
                                     <HStack w='100%' gap='20px'>
-                                        <Image src={i.image || anonymousImage} alt='avatar' w='40px' objectFit='cover' borderRadius='100%'/>
+                                        <Image src={(i.image && api_url + i.image) || anonymousImage} alt='avatar' w='40px' h='40px' objectFit='cover' borderRadius='100%'/>
                                         <Link href={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
                                             {`${i.first_name} ${i.last_name}`}
                                         </Link>
@@ -194,7 +194,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
         <VStack>
             <VStack w='300px'p='20px' borderRadius='10px' gap='20px'>
                 <VStack>
-                    <Image src={user.image || anonymousImage} alt='avatar' borderRadius='100%' w='150px'/>
+                    <Image src={(user.image && api_url + user.image) || anonymousImage} alt='avatar' borderRadius='100%' w='150px' h='150px' objectFit='cover'/>
                     <Text color='palette.1' fontWeight='800'>
                         {`${user.first_name} ${user.last_name}`}
                     </Text>

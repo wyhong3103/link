@@ -5,7 +5,6 @@ import { Editor } from "../Editor";
 import { 
     Flex, 
     Image, 
-    Text, 
     Link, 
     VStack, 
     Box, 
@@ -20,7 +19,6 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import { useErrorBoundary } from "react-error-boundary";
-import { convertDateTime } from "../../util/util";
 
 export const Comment = ({comment, postid, fetchPosts, userid}) => {
     const {showBoundary} = useErrorBoundary();
@@ -96,7 +94,7 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
 
             <Flex direction='row' w='100%' gap='20px' align='center'>
                 <Box>
-                    <Image src={`${comment.author.image}` || anonymousImage} w='50px' objectFit='cover' borderRadius='100%'/>
+                    <Image src={(comment.author.image && api_url + comment.author.image) || anonymousImage} w='50px' h='50px' objectFit='cover' borderRadius='100%'/>
                 </Box>
                 <VStack w='100%'>  
                         <Flex direction='row' w='100%' justify='space-between' align='end'>

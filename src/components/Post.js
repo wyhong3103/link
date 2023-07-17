@@ -167,7 +167,7 @@ export const Post = ({post, userid, fetchPosts}) => {
 
             <Flex direction='row' w='100%' gap='20px' justify='space-between'>
                 <HStack gap='20px'>
-                    <Image src={post.author.image || anonymousImage} w='50px' objectFit='cover' borderRadius='100%'/>
+                    <Image src={(post.author.image && api_url + post.author.image) || anonymousImage} w='50px' h='50px' objectFit='cover' borderRadius='100%'/>
                     <Flex direction='column'>
                         <Link color='palette.1' href={`/profile/${post.author._id}`}>
                             {`${post.author.first_name} ${post.author.last_name}`}
