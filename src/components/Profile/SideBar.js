@@ -105,7 +105,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
 
     const accept = async (id) => {
         const res = await fetch(
-            api_url + `/user/${id}/friend-request/${selfid}`,
+            api_url + `/user/${selfid}/friend-request/${id}`,
             {
                 method: 'POST',
                 headers: {
