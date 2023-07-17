@@ -8,7 +8,6 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     useDisclosure
@@ -240,7 +239,7 @@ export const Post = ({post, userid, fetchPosts}) => {
                 (post.comments).map(
                     i => {
                         return(
-                            <Comment comment={i}/>
+                            <Comment comment={i} postid={post._id} fetchPosts={fetchPosts} userid={userid}/>
                         )
                     }
                 )
