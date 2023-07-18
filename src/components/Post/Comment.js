@@ -6,7 +6,6 @@ import {
     Flex, 
     Image, 
     Link, 
-    VStack, 
     Box, 
     HStack, 
     Button,
@@ -93,9 +92,11 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
 
 
             <Flex direction='row' w='100%' gap='20px' align='center'>
-                <Box>
-                    <Image src={(comment.author.image && api_url + comment.author.image) || anonymousImage} w='50px' h='50px' objectFit='cover' borderRadius='100%'/>
-                </Box>
+                <Image 
+                src={(comment.author.image && api_url + comment.author.image) || anonymousImage} 
+                w='50px' h='50px' 
+                objectFit='cover' 
+                borderRadius='100%'/>
                 <Flex w='100%' direction='column'>  
                         <Flex direction='row' w='100%' justify='space-between' align='end'>
                             <Flex direction='row' w='100%'>
