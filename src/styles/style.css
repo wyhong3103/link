@@ -5,3 +5,62 @@ input:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
   -webkit-text-fill-color: #eeeeee !important;
 }
+
+.markdown table, th, td {
+    padding : 5px;
+    border: 1px solid;
+}
+
+.markdown h1{
+    font-size: xxx-large;
+}
+.markdown h2{
+    font-size: xx-large;
+}
+
+.markdown h3{
+    font-size: x-large;
+}
+
+.markdown h4{
+    font-size: large;
+}
+
+.markdown ol, ul{
+    padding : 0px 0px 0px 10px;
+}
+
+.markdown a{
+    color : #97feed;
+}
+
+.markdown a:hover{
+    text-decoration: underline;
+}
+
+.markdown :not(pre) > code{
+    background-color: #494F59;
+    padding : 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.markdown blockquote{
+    margin-left: 10px;
+    border-left: 2px #97feed solid;
+    padding-left : 10px;
+    color : #9094a0;
+}
+
+.markdown dt{
+    font-weight: 800;
+    font-style: italic;
+}
+
+.markdown ul, .markdown ol, .markdown dl{
+    line-height : 15px;
+}
+
+.markdown img{
+    border-radius: 5px;
+}

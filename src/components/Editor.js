@@ -51,7 +51,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
         <>
         
 
-        <Modal isOpen={isOpenPreview} onClose={onClosePreview}>
+        <Modal isOpen={isOpenPreview} onClose={onClosePreview} size={{base : 'sm', sm : 'md', md : 'xl',lg : '3xl'}}>
             <ModalOverlay />
             <ModalContent bg='palette.2'>
                 <ModalHeader color='palette.1'>Preview</ModalHeader>

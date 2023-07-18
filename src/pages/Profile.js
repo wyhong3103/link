@@ -88,7 +88,7 @@ export const Profile = () => {
                 
                 user.posts.length > 0 ?
 
-                <VStack>
+                <VStack gap='30px'>
                     {
                         user.posts.map(
                             i => 

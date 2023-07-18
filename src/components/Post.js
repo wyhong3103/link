@@ -216,7 +216,7 @@ export const Post = ({post, userid, fetchPosts}) => {
             </Flex>
 
 
-            <Content content={post.content} markdown={post.markdown} math={post.math} img={post.image}/>
+            <Content content={post.content} markdown={post.markdown} math={post.math}/>
 
 
             <Flex direction='row' justify='space-between' w='100%' align='center'>

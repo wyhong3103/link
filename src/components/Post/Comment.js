@@ -96,7 +96,7 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
                 <Box>
                     <Image src={(comment.author.image && api_url + comment.author.image) || anonymousImage} w='50px' h='50px' objectFit='cover' borderRadius='100%'/>
                 </Box>
-                <VStack w='100%'>  
+                <Flex w='100%' direction='column'>  
                         <Flex direction='row' w='100%' justify='space-between' align='end'>
                             <Flex direction='row' w='100%'>
                                 <Link color='palette.1' href={`/profile/${comment.author._id}`}>
@@ -139,8 +139,10 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
                             </HStack>
                             }
                         </Flex>
-                    <Content content={comment.content} markdown={comment.markdown} math={comment.math}/>
-                </VStack>
+                    <Box w={{base : '300px', md: '600px'}}>
+                        <Content content={comment.content} markdown={comment.markdown} math={comment.math}/>
+                    </Box>
+                </Flex>
             </Flex>
         </>
     )
