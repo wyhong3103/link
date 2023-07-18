@@ -29,7 +29,7 @@ export const Content = ({content , markdown, math}) => {
     , [content, markdown, math])
 
     return(
-        <Box w='100%' bg='palette.4' p='25px' borderRadius='10px' 
+        <Box w='100%' bg='palette.4' p='15px' borderRadius='10px' 
         overflow="hidden" whiteSpace="break-spaces" textOverflow="ellipsis"
         >
             {/* 
