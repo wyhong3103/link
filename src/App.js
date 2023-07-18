@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Error } from "./pages/Error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "./pages/Login";
+import { Logout } from "./pages/Logout";
 import { Register } from "./pages/Register";
 import { Verify } from "./pages/Verify";
 import { ResetPassword } from "./pages/ResetPassword";
@@ -23,6 +24,7 @@ export const App = () => {
             <ErrorBoundary FallbackComponent={Error}>
                 <Routes>
                     <Route path='/login' element={<Login/>}/>
+                    <Route path='/logout' element={<Logout/>}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/verify' element={<Verify/>}/>
                     <Route path='/reset-password' element={<ResetPassword/>}/>
