@@ -16,6 +16,7 @@ import { Friends } from "./pages/Friends";
 import { FriendRequests } from "./pages/FriendRequests";
 import { Search } from "./pages/Search";
 import { Chat } from "./pages/Chat";
+import { ChatRoom } from "./pages/ChatRoom";
 
 
 export const App = () => {
@@ -37,6 +38,7 @@ export const App = () => {
                     <Route path='/friends' element={<Friends/>}/>
                     <Route path='/friend-requests' element={<FriendRequests/>}/>
                     <Route path='/chat' element={<Chat/>}/>
+                    <Route path='/chat/:id' element={<ChatRoom/>}/>
                 </Routes>
             </ErrorBoundary>
         </BrowserRouter>
