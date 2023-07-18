@@ -97,7 +97,7 @@ export const Comment = ({comment, postid, fetchPosts, userid}) => {
                 w='50px' h='50px' 
                 objectFit='cover' 
                 borderRadius='100%'/>
-                <Flex w='100%' direction='column'>  
+                <Flex w='100%' direction='column' gap='5px'>  
                         <Flex direction='row' w='100%' justify='space-between' align='end'>
                             <Flex direction='row' w='100%'>
                                 <Link color='palette.1' href={`/profile/${comment.author._id}`}>
