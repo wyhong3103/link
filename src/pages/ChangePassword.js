@@ -79,6 +79,13 @@ export const ChangePassword = () => {
         }
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            submit();
+        }
+    };
+
+
     useEffect(
         () => {
             (async () => {
@@ -132,6 +139,7 @@ export const ChangePassword = () => {
                                 color='palette.1'
                                 value={formData.old_password}
                                 onChange={(e) => handleInputChange('old_password', e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow1(!show1)} bg='palette.4'
@@ -169,6 +177,7 @@ export const ChangePassword = () => {
                                 color='palette.1'
                                 value={formData.new_password}
                                 onChange={(e) => handleInputChange('new_password', e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow2(!show2)} bg='palette.4'
@@ -206,6 +215,7 @@ export const ChangePassword = () => {
                                 color='palette.1'
                                 value={formData.new_repassword}
                                 onChange={(e) => handleInputChange('new_repassword', e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow3(!show3)} bg='palette.4'

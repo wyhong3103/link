@@ -58,7 +58,13 @@ export const Register = () => {
             setOk(false);
             setError({...data.error});
         }
-    }
+    } 
+    
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            register();
+        }
+    };
 
     return(
         <Flex bg='palette.4' minH={'100vh'} justify='center' align='center' p='10px'>
@@ -85,6 +91,7 @@ export const Register = () => {
                             color='palette.1'
                             value={formData.first_name}
                             onChange={(e) => handleInputChange('first_name', e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                         <FormErrorMessage>
                             {error.first_name}
@@ -105,6 +112,7 @@ export const Register = () => {
                             value={formData.last_name}
                             color='palette.1'
                             onChange={(e) => handleInputChange('last_name', e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                         <FormErrorMessage>
                             {error.last_name}
@@ -126,6 +134,7 @@ export const Register = () => {
                             value={formData.email}
                             color='palette.1'
                             onChange={(e) => handleInputChange('email', e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                         <FormErrorMessage>
                             {error.email}
@@ -148,6 +157,7 @@ export const Register = () => {
                                 color='palette.1'
                                 value={formData.password}
                                 onChange={(e) => handleInputChange('password', e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow1(!show1)} bg='palette.4'
@@ -185,6 +195,7 @@ export const Register = () => {
                                 color='palette.1'
                                 value={formData.repassword}
                                 onChange={(e) => handleInputChange('repassword', e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow2(!show2)} bg='palette.4'

@@ -33,6 +33,12 @@ export const ForgotPasswordModal = () => {
         }
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            submit()
+        }
+    };
+
     return(
         <>
         <ModalOverlay />
@@ -56,6 +62,7 @@ export const ForgotPasswordModal = () => {
                             color='palette.1'
                             value={email}
                             onChange={e => setEmail(e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                     </FormControl>
                     <FormControl isInvalid={error.result && error.result.length > 0}>

@@ -74,6 +74,12 @@ export const ResetPassword = () => {
         }
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            submit();
+        }
+    };
+
     return(
         ok ? 
         <Success text="Password has been reset."/>
@@ -104,6 +110,7 @@ export const ResetPassword = () => {
                                 color='palette.1'
                                 value={formData.password}
                                 onChange={(e) => handleInputChange('password',e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow1(!show1)} bg='palette.4'
@@ -141,6 +148,7 @@ export const ResetPassword = () => {
                                 color='palette.1'
                                 value={formData.repassword}
                                 onChange={(e) => handleInputChange('repassword',e.target.value)}
+                                onKeyDown={enterSubmit}
                             />
                             <InputRightElement width='4.5rem'>
                                 <Button h='1.75rem' size='sm' onClick={() => setShow2(!show2)} bg='palette.4'

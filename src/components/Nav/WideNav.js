@@ -40,6 +40,12 @@ export const WideNav = ({last_name, id, fetchUsers}) => {
         window.location.reload();
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            search();
+        }
+    };
+
     return(
         <Flex bg='palette.3' 
         direction='row' w='100%' h='80px' p='5px 40px 5px 40px' justify='space-between' align='center' pos='sticky' top='0'
@@ -88,6 +94,7 @@ export const WideNav = ({last_name, id, fetchUsers}) => {
                             color='palette.1'
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                         <Button bg='palette.4'
                             css={{

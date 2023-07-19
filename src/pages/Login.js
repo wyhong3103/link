@@ -71,6 +71,13 @@ export const Login = () => {
         }
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            login();
+        }
+    };
+
+
 
     return(
         <>
@@ -108,6 +115,7 @@ export const Login = () => {
                                     color='palette.1'
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    onKeyDown={enterSubmit}
                                 />
                                 <FormErrorMessage>
                                     {error.email}
@@ -130,6 +138,7 @@ export const Login = () => {
                                     color='palette.1'
                                     value={pw}
                                     onChange={(e) => setPw(e.target.value)}
+                                    onKeyDown={enterSubmit}
                                 />
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='sm' onClick={() => setShow(!show)} bg='palette.4'

@@ -16,7 +16,6 @@ import {
 import { useEffect, useState, useRef } from "react"
 import { useErrorBoundary } from "react-error-boundary"
 import useAuth from "../hooks/useAuth"
-import { Form } from "react-router-dom"
 
 export const UpdateProfile = () => {
     // first name, last name, image
@@ -126,6 +125,11 @@ export const UpdateProfile = () => {
         }
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            update();
+        }
+    };
 
     useEffect(
         () => {
@@ -250,6 +254,7 @@ export const UpdateProfile = () => {
                         color='palette.1'
                         value={name.first_name}
                         onChange={(e) => handleNameChange('first_name', e.target.value)}
+                        onKeyDown={enterSubmit}
                     />
                     <FormErrorMessage>
                         {error.first_name}
@@ -273,6 +278,7 @@ export const UpdateProfile = () => {
                         color='palette.1'
                         value={name.last_name}
                         onChange={(e) => handleNameChange('last_name', e.target.value)}
+                        onKeyDown={enterSubmit}
                     />
                     <FormErrorMessage>
                         {error.last_name}

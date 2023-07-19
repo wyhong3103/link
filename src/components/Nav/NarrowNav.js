@@ -43,6 +43,12 @@ export const NarrowNav = ({id, fetchUsers}) => {
         window.location.reload();
     }
 
+    const enterSubmit = (event) => {
+        if (event.keyCode === 13) {
+            search();
+        }
+    };
+
     return(
         <>
         
@@ -59,6 +65,7 @@ export const NarrowNav = ({id, fetchUsers}) => {
                             color='palette.1'
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={enterSubmit}
                         />
                         <Button bg='palette.4'
                             css={{
