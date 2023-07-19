@@ -69,6 +69,23 @@ export const Login = () => {
         } else {
             setError({...data.error});
         }
+    }    
+    
+    const dummy = async () => {
+        const res = await fetch(
+            api_url + '/auth/dummy',
+            {
+                credentials : 'include',
+            }
+        );
+        
+        const data = await res.json();
+
+        if (res.ok){
+            navigate('/');
+        } else {
+            setError({...data.error});
+        }
     }
 
     const enterSubmit = (event) => {
@@ -205,6 +222,19 @@ export const Login = () => {
                             onClick={() => navigate('/register')}
                         >
                             <Text color='palette.1'>Register</Text>
+                        </Button>
+                        <Button bg='palette.4' minW='100%'
+                            css={{
+                                '&:hover': {
+                                    backgroundColor: '#11999E',
+                                },
+                                '&:active': {
+                                    backgroundColor: '#11999E',
+                                },
+                            }}
+                            onClick={dummy}
+                        >
+                            <Text color='palette.1'>Login as Dummy</Text>
                         </Button>
                     </VStack>
                 </VStack>
