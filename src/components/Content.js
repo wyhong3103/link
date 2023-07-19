@@ -11,6 +11,11 @@ import "highlight.js/styles/github-dark.css";
 export const Content = ({content , markdown, math}) => {
     const container = useRef();
 
+    marked.use({
+        mangle : false,
+        headerIds: false
+    })
+
     useEffect(
         () => {
             const options = {
@@ -22,6 +27,9 @@ export const Content = ({content , markdown, math}) => {
                 renderMathInElement(container.current, options);
             }
             if (markdown){
+                hljs.configure({
+                    ignoreUnescapedHTML : true
+                })
                 hljs.highlightAll(); 
             }
         }
