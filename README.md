@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Link : A Social Platform for Connecting with Friends
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Link](https://link-social.netlify.app/) is a social platform designed to facilitate seamless connectivity between individuals and their friends. 
 
-## Available Scripts
+**Note: Cookies must be enabled to access Link's full functionality.**
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+### Authentication
+Link prioritizes the security of user information. User passwords are encrypted using the industry-standard [bcrypt.js](https://www.npmjs.com/package/bcryptjs) library, ensuring sensitive data remains safe and protected. Additionally, authorization is achieved through the utilization of [JSON Web Tokens (JWT)](https://www.npmjs.com/package/jsonwebtoken), providing a secure and efficient method for verifying user identity.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Email Verification
+To enhance user trust and security, Link incorporates an email verification system. By utilizing [nodemailer](https://www.npmjs.com/package/nodemailer) , the platform sends verification emails to users during the registration process, ensuring that only legitimate and verified accounts gain access.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Real-time Chatting 
+Link leverages the power of [socket.io](https://socket.io/) a library that supports low-latency, bidirectional communication.
 
-### `npm test`
+### Markdown & LaTeX Support
+Link goes beyond standard text input by integrating the capability to render Markdown and LaTeX. Utilizing the [marked](https://marked.js.org/) library for Markdown and [katex](https://katex.org/) for LaTeX, users can express themselves with rich text formatting and mathematical notations, fostering a diverse range of interactions and discussions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Partial Searching
+To enable efficient user discovery, Link uses dynamic programming to compute the similarity between two strings using the edit distance algorithm. This approach facilitates partial searching, allowing users to find others with similar names, streamlining the process of connecting with friends.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Front-End: React.js, HTML, CSS, Chakra-UI
+<br> 
+Back-End: Node.js, Express.js, MongoDB, Mongoose, SuperTest
+<br>
+Authentication: bcrypt.js, JSON Web Token
+<br>
+Real-time Chat: socket.io
+<br>
+Rich Text Support: marked, katex
+<br>
+Deployment: Netlify, Railway
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Live Demo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://link-social.netlify.app/
