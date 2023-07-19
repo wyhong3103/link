@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { 
     Flex, 
     VStack, 
@@ -150,7 +151,7 @@ export const UserList = ({selfid, users, fetchUsers}) => {
                 users.length > 0 ?
                 users.map(
                     i => 
-                    <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{base : '200px', sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px'>
+                    <Flex direction={{base : 'column', sm : 'row'}}justify='space-between' w={{base : '200px', sm : '450px', md : '600px'}} bg='palette.3' p='20px' borderRadius='10px' gap='20px' key={uuidv4()}>
                         <HStack gap='20px'>
                             <Image src={(i.image && api_url + i.image) || anonymousImage} alt='avatar' h='40px' w='40px' objectFit='cover' borderRadius='100%'/>
                             <Link href={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
@@ -169,6 +170,7 @@ export const UserList = ({selfid, users, fetchUsers}) => {
                                         }}
                                         onClick={() => btn[1](i._id)}
                                         color ='palette.1'
+                                        key={uuidv4()}
                                     >
                                         {btn[0]}
                                     </Button>

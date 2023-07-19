@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import {
     VStack, 
     Button, 
@@ -168,7 +169,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
                             {
                                 user.friends.map(
                                     i => 
-                                    <HStack w='100%' gap='20px'>
+                                    <HStack w='100%' gap='20px' key={uuidv4()}>
                                         <Image src={(i.image && api_url + i.image) || anonymousImage} alt='avatar' w='40px' h='40px' objectFit='cover' borderRadius='100%'/>
                                         <Link href={`/profile/${i._id}`} color='palette.1' fontSize='17px'>
                                             {`${i.first_name} ${i.last_name}`}
@@ -213,6 +214,7 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
                                     },
                                 }}
                                 onClick={() => btn[1](user._id)}
+                                key={uuidv4()}
                             >
                                 <Text color='palette.1'>
                                     {btn[0]}

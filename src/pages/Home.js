@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Editor } from "../components/Editor"
 import { Nav } from "../components/Nav"
 import { Post } from "../components/Post"
@@ -105,7 +106,7 @@ export const Home = () => {
                         blogs.length > 0 ?
                         blogs.map(
                             i => 
-                            <Post post={i} userid={self.userid} fetchPosts={fetchPosts}/>
+                            <Post post={i} userid={self.userid} fetchPosts={fetchPosts} key={uuidv4()}/>
                         )
                         :
                         <Text color='palette.1'>

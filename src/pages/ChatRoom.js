@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { v4 as uuidv4 } from 'uuid';
 import { Editor } from "../components/Editor"
 import { Bubble } from "../components/ChatRoom/Bubble"
 import { Nav } from "../components/Nav"
@@ -141,7 +142,7 @@ export const ChatRoom = () => {
 
                             messages.map(
                                 i =>
-                                <Bubble selfid={self.userid} message={i}/>
+                                <Bubble selfid={self.userid} message={i} key={uuidv4()}/>
                             )
 
                             :

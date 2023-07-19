@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Nav } from "../components/Nav"
 import { 
     VStack,
@@ -40,7 +41,6 @@ export const Chat = () => {
             showBoundary(error);
             return;
         }
-        console.log(data.chats);
 
         setChats([...data.chats]);
     }
@@ -95,6 +95,7 @@ export const Chat = () => {
                             p='10px'
                             h='60px'
                             onClick={() => navigate('/chat/' + i.user._id)}
+                            key={uuidv4()}
                         >
                             <Flex direction='row' justify='start' align='center' w='100%'  borderRadius='10px' gap='20px'
                             >

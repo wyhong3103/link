@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { ReactComponent as PencilLogo } from '../assets/svgs/pencil.svg';
 import { ReactComponent as BinLogo } from '../assets/svgs/bin.svg';
 import { Editor } from "./Editor"
@@ -251,7 +252,7 @@ export const Post = ({post, userid, fetchPosts}) => {
                 (post.comments).map(
                     i => {
                         return(
-                            <Comment comment={i} postid={post._id} fetchPosts={fetchPosts} userid={userid}/>
+                            <Comment comment={i} postid={post._id} fetchPosts={fetchPosts} userid={userid} key={uuidv4()}/>
                         )
                     }
                 )

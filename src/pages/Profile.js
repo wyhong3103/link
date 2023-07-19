@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { SideBar } from "../components/Profile/SideBar"
 import { Post } from "../components/Post"
 import { Nav } from "../components/Nav"
@@ -92,7 +93,7 @@ export const Profile = () => {
                     {
                         user.posts.map(
                             i => 
-                            <Post post={i} userid={self.userid} fetchPosts={fetchInfo}/>
+                            <Post post={i} userid={self.userid} fetchPosts={fetchInfo} key={uuidv4()}/>
                         )
                     }
                 </VStack> 
