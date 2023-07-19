@@ -2,7 +2,6 @@ import { Content } from "../Content"
 import { 
     Flex,
     Box,
-    Image,
     Text
 } from "@chakra-ui/react"
 
@@ -24,7 +23,7 @@ export const Bubble = ({selfid, message}) => {
                 <Text color='palette.1'>
                     {message.author.first_name} {message.author.last_name}
                 </Text>
-                <Box>
+                <Box maxW='100%'>
                     <Content content={message.content} markdown={message.markdown} math={message.math}/>
                 </Box>
             </Flex>

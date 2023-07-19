@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Editor } from "../components/Editor"
 import { Bubble } from "../components/ChatRoom/Bubble"
 import { Nav } from "../components/Nav"
@@ -12,6 +13,9 @@ import useAuth from "../hooks/useAuth"
 import { useErrorBoundary } from "react-error-boundary"
 import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
+import { io } from 'socket.io-client'
+
+const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 
 export const ChatRoom = () => {
@@ -25,6 +29,31 @@ export const ChatRoom = () => {
     const [user, setUser] = useState({});
     const api_url = process.env.REACT_APP_API_URL;
     const anonymousImage = `${api_url}/images/anonymous.jpg`;
+
+    const pushMsg = (msg) => {
+        if (!msg.content.trim().length || msg.content.length > 20000) return;
+        const temp = messages;
+        temp.push(msg);
+        setMessages([...temp]);
+    }
+
+    const send = (clear, setError, formData) => {
+        formData.author = {};
+        formData.author._id = self.userid;
+        if (!formData.content.trim().length || formData.content.length > 20000){
+            setError('Message should be within 1 to 20000 characters.')
+            return;
+        }
+        socket.emit('send', formData, [self.userid, id], self.userid);
+        pushMsg(formData);
+        clear();
+    }
+
+    const receive = (msg) => {
+        msg.author.first_name = user.first_name;
+        msg.author.last_name = user.last_name;
+        pushMsg(msg);
+    };
 
     const fetchMessages = async () => {
         const res = await fetch(
@@ -48,18 +77,33 @@ export const ChatRoom = () => {
         setUser({...data.user});
     }
 
+
     useEffect(
         () => {
             (async () => {
                 if (self){
-                    console.log(self);
                     await fetchMessages();
                     setLoading(false);
-                    if (lastElementRef.current) lastElementRef.current.scrollIntoView({ behavior: 'smooth' });
+                    socket.emit('join', [self.userid, id]);
                 }
             })()
         }
     , [self])
+
+    useEffect(
+        () => {
+            socket.on('receive', receive);
+            return () => {
+                socket.off('receive', receive);
+            };
+        }
+    ,[receive])
+
+    useEffect(
+        () => {
+            if (lastElementRef.current) lastElementRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    ,[messages])
 
 
     return(
@@ -90,7 +134,7 @@ export const ChatRoom = () => {
                         {user.first_name} {user.last_name}
                     </Text>
                 </Flex>
-                <VStack w={{base : '400px', md :'700px'}} gap='10px' bg='palette.3' p='5px' borderBottomRadius='10px'>
+                <VStack w={{base : '400px', md :'700px'}} gap='10px' bg='palette.3' p='10px' borderBottomRadius='10px'>
                     <VStack w='100%' p='10px' h='300px' overflow='auto'>
                         {
                             messages.length > 0 ?
@@ -108,7 +152,7 @@ export const ChatRoom = () => {
                         }
                         <div ref={lastElementRef}/> 
                     </VStack>
-                    <Editor placeholder='Write a message.'/>
+                    <Editor placeholder='Write a message.' cb={send}/>
                 </VStack>
             </VStack>
         </VStack>

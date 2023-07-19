@@ -40,6 +40,7 @@ export const Editor = ({placeholder, cb, content, markdown, math}) => {
             markdown : false,
             math : false
         });
+        setError('');
     }
 
     const submit = () => {
