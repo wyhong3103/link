@@ -128,19 +128,19 @@ export const UserList = ({selfid, users, fetchUsers}) => {
         ],
         friend : [
             ['Unlink', (id) => unlink(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         stranger : [
             ['Link', (id) => link(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         sent : [
             ['Requested', (id) => unsend(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         accept : [
             ['Accept', (id) => accept(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ]
     }
 

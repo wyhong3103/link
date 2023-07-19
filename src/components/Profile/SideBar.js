@@ -135,19 +135,19 @@ export const SideBar = ({selfid, user, fetchInfo}) => {
         ],
         friend : [
             ['Unlink', () => unlink(user._id)],
-            ['Chat', () => go('/chat?friendid='+ user._id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         stranger : [
             ['Link', () => link(user._id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         sent : [
             ['Requested', (id) => unsend(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ],
         accept : [
             ['Accept', (id) => accept(id)],
-            ['Chat', (id) => go('/chat?friendid='+ id)]
+            ['Chat', (id) => go('/chat/'+ id)]
         ]
 
     }
