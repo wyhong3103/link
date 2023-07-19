@@ -40,3 +40,23 @@ Deployment: Netlify, Railway
 ## Live Demo
 
 https://link-social.netlify.app/
+
+## Screenshots
+
+![Link Screenshot](./src/assets/images/1.png)
+![Link Screenshot](./src/assets/images/2.png)
+![Link Screenshot](./src/assets/images/3.png)
+![Link Screenshot](./src/assets/images/4.png)
+![Link Screenshot](./src/assets/images/5.png)
+![Link Screenshot](./src/assets/images/6.png)
+![Link Screenshot](./src/assets/images/7.png)
+![Link Screenshot](./src/assets/images/8.png)
+![Link Screenshot](./src/assets/images/9.png)
+![Link Screenshot](./src/assets/images/10.png)
+![Link Screenshot](./src/assets/images/11.png)
+![Link Screenshot](./src/assets/images/12.png)
+![Link Screenshot](./src/assets/images/13.png)
+![Link Screenshot](./src/assets/images/14.png)
+![Link Screenshot](./src/assets/images/15.png)
+![Link Screenshot](./src/assets/images/16.png)
+![Link Screenshot](./src/assets/images/17.png)
