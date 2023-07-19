@@ -19,7 +19,12 @@ export const Content = ({content , markdown, math}) => {
     useEffect(
         () => {
             const options = {
-                delimiters : [{left: "$$", right: "$$", display: true},{left: "$", right: "$", display: false}],
+                delimiters : [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ],
                 output : 'mathml'
             }
 
