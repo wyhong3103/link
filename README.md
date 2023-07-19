@@ -41,6 +41,10 @@ Deployment: Netlify, Railway
 
 https://link-social.netlify.app/
 
+## Backend Repository
+
+https://github.com/wyhong3103/link-api
+
 ## Screenshots
 
 ![Link Screenshot](./src/assets/images/1.png)
