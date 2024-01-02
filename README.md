@@ -1,6 +1,6 @@
 # Link : A Social Platform for Connecting with Friends
 
-[Link](https://link-social.netlify.app/) is a social platform designed to facilitate seamless connectivity between individuals and their friends. 
+Link is a social platform designed to facilitate seamless connectivity between individuals and their friends. 
 
 **Note: Cookies must be enabled to access Link's full functionality.**
 
@@ -36,10 +36,6 @@ Rich Text Support: marked, katex
 <br>
 Deployment: Netlify, Railway
 
-
-## Live Demo
-
-https://link-social.netlify.app/
 
 ## Backend Repository
 
